@@ -6,6 +6,8 @@ the page shows the two Commons portraits side by side instead.
 
 Outputs
   web/img/<slug>.jpg     thumbnails (about 330 px)
+  web/img/custom/        couple photos you saved yourself (celebrity and pro together), named
+                         after the celebrity, e.g. connor-wood.jpg; shown instead of the portraits
   data/photos.csv        person, role, file, article, image page (for credits)
 """
 import re
@@ -44,6 +46,16 @@ def is_about(person, page):
     return page.get("type") == "standard" and any(t in title for t in tokens)
 
 
+def couple_photo(celebrity):
+    """A couple photo you saved into web/img/custom/<celebrity>.jpg, if there is one."""
+    for ext in ("jpg", "jpeg", "png", "webp"):
+        f = IMG / "custom" / f"{slug(celebrity)}.{ext}"
+        if f.exists():
+            return {"person": celebrity, "role": "couple", "file": f"img/custom/{f.name}",
+                    "article": "", "image": ""}
+    return None
+
+
 def fetch(person, article, role):
     if not isinstance(article, str) or not article:
         return None
@@ -70,6 +82,9 @@ def main():
     rows = []
     for _, c in cast.iterrows():
         pro = c["pro"].split("  ")[0]
+        both = couple_photo(c["celebrity"])
+        if both:
+            rows.append(both)
         for person, article, role in [(c["celebrity"], c["wiki"], "celebrity"),
                                       (pro, c.get("pro_wiki"), "pro")]:
             try:

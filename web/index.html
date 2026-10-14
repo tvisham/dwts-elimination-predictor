@@ -107,6 +107,11 @@
   .photos > * { width: 100%; height: 150px; object-fit: cover; object-position: 50% 18%; display: grid; place-items: center;
     font: 600 34px/1 "Playfair Display", serif; color: var(--gold2); }
   .photos > .ph-pro { border-left: 2px solid var(--bg); }
+  .photos.one { grid-template-columns: 1fr; height: 230px; }
+  .photos.one > * { height: 230px; object-position: 50% 22%; }
+  /* full-length couple shots: zoom the round badge in on the faces */
+  .duo .av.both { width: calc(var(--s, 40px) * 1.5); border-radius: 999px;
+    background-size: 210% auto; background-position: 50% 21%; background-repeat: no-repeat; }
   .photos > .initials { background: linear-gradient(160deg, #3a2a7a, #241c4d); }
   .card .body { padding: 12px 14px 14px; }
   .card h3 { font-size: 18px; }
@@ -130,6 +135,8 @@
   .panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
   .panel p { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
   svg.cal { width: 100%; display: block; }
+  .live-bt { display: grid; gap: 6px; }
+  .live-bt div { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 13px; }
   .ok { color: var(--teal); font-weight: 600; } .miss { color: var(--danger); font-weight: 600; }
   .how { color: var(--muted); font-size: 14px; max-width: 780px; }
   footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 56px; line-height: 1.7; }
@@ -203,6 +210,9 @@
         <div id="record"></div>
       </div>
     </div>
+    <h3 class="small">This season, week by week</h3>
+    <p class="sub" id="hind-sub"></p>
+    <div class="live-bt" id="hindsight"></div>
   </section>
 
   <section>
@@ -229,7 +239,13 @@ const initials = name => name.replace(/[^A-Za-z ]/g, "").split(" ").filter(Boole
 const av = (photo, name, cls = "") => photo
   ? `<img class="av ${cls}" src="${esc(photo.file)}" alt="${esc(name)}" loading="lazy">`
   : `<span class="av ${cls}" role="img" aria-label="${esc(name)}">${esc(initials(name))}</span>`;
-const duo = c => `<span class="duo">${av(c.photo, c.celebrity)}${av(c.pro_photo, c.pro, "pro")}</span>`;
+// a saved couple photo wins; otherwise the two Wikipedia portraits side by side
+const duo = c => c.couple_photo
+  ? `<span class="duo"><span class="av both" role="img" aria-label="${esc(c.couple)}" style="background-image:url('${esc(c.couple_photo.file)}')"></span></span>`
+  : `<span class="duo">${av(c.photo, c.celebrity)}${av(c.pro_photo, c.pro, "pro")}</span>`;
+const photoStrip = c => c.couple_photo
+  ? `<div class="photos one">${tile(c.couple_photo, c.couple, "ph-couple")}</div>`
+  : `<div class="photos">${tile(c.photo, c.celebrity, "ph-celeb")}${tile(c.pro_photo, c.pro, "ph-pro")}</div>`;
 const tile = (photo, name, cls) => photo
   ? `<img class="${cls}" src="${esc(photo.file)}" alt="${esc(name)}" loading="lazy">`
   : `<div class="${cls} initials" role="img" aria-label="${esc(name)}">${esc(initials(name))}</div>`;
@@ -311,7 +327,7 @@ $("cards").innerHTML = cardOrder.map(c => {
   const wv = c.wiki_views.filter(v => v.views != null).at(-1);
   const yt = c.social.youtube_views, ytn = c.social.youtube_videos;
   return `<div class="card ${c.alive ? "" : "gone"}">
-    <div class="photos">${tile(c.photo, c.celebrity, "ph-celeb")}${tile(c.pro_photo, c.pro, "ph-pro")}</div>
+    ${photoStrip(c)}
     <div class="body">
     <h3>${esc(c.celebrity)}</h3><div class="pro">with ${esc(c.pro)}</div>
     <span class="tag">${esc(c.category)}</span>
@@ -365,6 +381,14 @@ $("record").innerHTML = R.length
        <td>${r.actual.map(esc).join(", ")} (${pct(r.p_actual)})</td><td class="${r.hit ? "ok" : "miss"}">${r.hit ? "✓" : "✗ #" + r.rank_of_actual}</td></tr>`).join("")}</table><p>${pending}</p>`
   : `<p>No graded weeks yet. ${pending} Earlier weeks of this season can't be graded honestly, because their odds were never saved before the shows aired.</p>`;
 
+const Hs = D.hindsight || [];
+const called = Hs.filter(r => r.hit).length;
+$("hind-sub").textContent = `Each week replayed by a model trained only on earlier seasons: it called ${called} of ${Hs.length}. `
+  + `Looser than the frozen record above, because it uses today's view counts.`;
+$("hindsight").innerHTML = Hs.map(r =>
+  `<div><b>Week ${r.week}</b> ${esc(r.theme)} · predicted <b>${r.predicted.map(esc).join(", ")}</b>, actual <b>${r.actual.map(esc).join(", ")}</b>
+   (${pct(r.p_actual)}) · <span class="${r.hit ? "ok" : "miss"}">${r.hit ? "✓ called it" : `✗ missed (was #${r.rank_of_actual})`}</span></div>`).join("");
+
 // ---- how it works
 const C = D.coefficients;
 const w = v => `<code>${v >= 0 ? "+" : ""}${v.toFixed(2)}</code>`;
@@ -382,7 +406,7 @@ Each couple gets a <b>danger rating</b>, a weighted sum of the inputs below (pos
 Future weeks are simulated ${D.sims.toLocaleString()} times. Projected scores follow each couple's recent form, shifted by the announced dance style where known; the finale is decided by buzz plus form.</p>`;
 
 // ---- credits
-const credited = D.couples.flatMap(c => [[c.celebrity, c.photo], [c.pro, c.pro_photo]]).filter(([, p]) => p);
+const credited = D.couples.flatMap(c => [[c.celebrity, c.photo], [c.pro, c.pro_photo]]).filter(([, p]) => p && p.image);
 $("credits").innerHTML = credited.map(([n, p]) => `<a href="${esc(p.image)}" target="_blank" rel="noopener">${esc(n)}</a>`).join(" · ")
   + "<br>Photos from Wikimedia Commons via each person's Wikipedia article; licenses on each file page.";
 </script>

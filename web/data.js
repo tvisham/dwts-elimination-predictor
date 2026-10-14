@@ -30,6 +30,11 @@ window.DWTS = {
    "alive": false,
    "photo": null,
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/conner-leavitt.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -71,6 +76,11 @@ window.DWTS = {
    "alive": false,
    "photo": null,
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/sarah-jane-nader.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -116,6 +126,11 @@ window.DWTS = {
     "image": "https://commons.wikimedia.org/wiki/File:Giada_De_Laurentiis_2010.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
    },
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/giada-de-laurentiis.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -174,6 +189,11 @@ window.DWTS = {
     "file": "img/britt-stewart.jpg",
     "article": "https://en.wikipedia.org/wiki/Britt_Stewart",
     "image": "https://commons.wikimedia.org/wiki/File:3840px-Britt_Stewart_at_Tribeca_Film_Festival_2026-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   },
+   "couple_photo": {
+    "file": "img/custom/taylor-hanson.png",
+    "article": "",
+    "image": ""
    },
    "scores": [
     {
@@ -236,6 +256,11 @@ window.DWTS = {
    "alive": false,
    "photo": null,
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/ciara-miller.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -314,6 +339,11 @@ window.DWTS = {
     "file": "img/witney-carson.jpg",
     "article": "https://en.wikipedia.org/wiki/Witney_Carson",
     "image": "https://commons.wikimedia.org/wiki/File:Witney_Carson_2019_by_Glenn_Francis_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "couple_photo": {
+    "file": "img/custom/guillermo-rodriguez.png",
+    "article": "",
+    "image": ""
    },
    "scores": [
     {
@@ -403,6 +433,11 @@ window.DWTS = {
     "file": "img/jan-ravnik.jpg",
     "article": "https://en.wikipedia.org/wiki/Jan_Ravnik",
     "image": "https://commons.wikimedia.org/wiki/File:3840px-Jan_Ravnik_at_Tribeca_Film_Festival_2026-1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+   },
+   "couple_photo": {
+    "file": "img/custom/tatyana-ali.png",
+    "article": "",
+    "image": ""
    },
    "scores": [
     {
@@ -509,6 +544,11 @@ window.DWTS = {
     "article": "https://en.wikipedia.org/wiki/Sharna_Burgess",
     "image": "https://commons.wikimedia.org/wiki/File:Sharna_Burgess_2012_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
    },
+   "couple_photo": {
+    "file": "img/custom/tyler-cameron.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -610,6 +650,11 @@ window.DWTS = {
     "image": "https://commons.wikimedia.org/wiki/File:Jenna_Dewan_at_San_Diego_Comic_Con_2026-2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
    },
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/jenna-dewan.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -714,6 +759,11 @@ window.DWTS = {
     "file": "img/daniella-karagach.jpg",
     "article": "https://en.wikipedia.org/wiki/Daniella_Karagach",
     "image": "https://commons.wikimedia.org/wiki/File:Daniella_Karagach%2C_Pasha_Pashkov_on_Panache_Star_Dancesport.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "couple_photo": {
+    "file": "img/custom/ezra-frech.png",
+    "article": "",
+    "image": ""
    },
    "scores": [
     {
@@ -820,6 +870,11 @@ window.DWTS = {
     "article": "https://en.wikipedia.org/wiki/Pasha_Pashkov",
     "image": "https://commons.wikimedia.org/wiki/File:Pasha_Pashkov_on_Panache_Star_Dancesport.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
    },
+   "couple_photo": {
+    "file": "img/custom/amber-glenn.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -924,6 +979,11 @@ window.DWTS = {
     "file": "img/mark-ballas.jpg",
     "article": "https://en.wikipedia.org/wiki/Mark_Ballas",
     "image": "https://commons.wikimedia.org/wiki/File:Mark_Ballas_%282014%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "couple_photo": {
+    "file": "img/custom/maura-higgins.png",
+    "article": "",
+    "image": ""
    },
    "scores": [
     {
@@ -1030,6 +1090,11 @@ window.DWTS = {
     "article": "https://en.wikipedia.org/wiki/Emma_Slater",
     "image": "https://commons.wikimedia.org/wiki/File:Emma_Slater_Better_Together_2026_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
    },
+   "couple_photo": {
+    "file": "img/custom/jackson-olson.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -1131,6 +1196,11 @@ window.DWTS = {
     "image": "https://commons.wikimedia.org/wiki/File:Harry_Shum_Jr._podczas_San_Diego_ComicCon_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
    },
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/harry-shum-jr.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -1232,6 +1302,11 @@ window.DWTS = {
     "image": "https://commons.wikimedia.org/wiki/File:Julia_Stiles_by_David_Shankbone_cropped.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
    },
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/julia-stiles.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -1329,6 +1404,11 @@ window.DWTS = {
    "alive": true,
    "photo": null,
    "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/connor-wood.png",
+    "article": "",
+    "image": ""
+   },
    "scores": [
     {
      "week": 1,
@@ -1508,6 +1588,75 @@ window.DWTS = {
   "model_judges": 0.3790849673202614
  },
  "record": [],
+ "hindsight": [
+  {
+   "week": 1,
+   "theme": "Premiere",
+   "predicted": [
+    "Guillermo Rodriguez",
+    "Conner Leavitt"
+   ],
+   "actual": [
+    "Conner Leavitt",
+    "Sarah Jane Nader"
+   ],
+   "hit": true,
+   "rank_of_actual": 2,
+   "p_actual": 0.2064944589431182
+  },
+  {
+   "week": 2,
+   "theme": "Viral Hits Night",
+   "predicted": [
+    "Guillermo Rodriguez"
+   ],
+   "actual": [
+    "Giada De Laurentiis"
+   ],
+   "hit": false,
+   "rank_of_actual": 2,
+   "p_actual": 0.14855318046815133
+  },
+  {
+   "week": 3,
+   "theme": "Yacht Rock Night",
+   "predicted": [
+    "Guillermo Rodriguez"
+   ],
+   "actual": [
+    "Taylor Hanson"
+   ],
+   "hit": false,
+   "rank_of_actual": 2,
+   "p_actual": 0.11262626969002004
+  },
+  {
+   "week": 4,
+   "theme": "Mariah Carey Night",
+   "predicted": [
+    "Guillermo Rodriguez"
+   ],
+   "actual": [
+    "Ciara Miller"
+   ],
+   "hit": false,
+   "rank_of_actual": 7,
+   "p_actual": 0.05542837096027629
+  },
+  {
+   "week": 5,
+   "theme": "Super Bowl Night",
+   "predicted": [
+    "Guillermo Rodriguez"
+   ],
+   "actual": [
+    "Guillermo Rodriguez"
+   ],
+   "hit": true,
+   "rank_of_actual": 1,
+   "p_actual": 0.3895873469730456
+  }
+ ],
  "l2_scores": {
   "0.5": 1.6682715404250321,
   "2.0": 1.6475376329943503,

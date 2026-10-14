@@ -455,6 +455,26 @@ def scorecard(df, season):
     return rows
 
 
+def replay_weeks(df, season, l2, themes):
+    """Weeks already played this season, re-predicted by a model trained on past seasons only.
+
+    Not as strict as the frozen record: it uses today's view counts, which already
+    include some of the views each couple got after those weeks.
+    """
+    beta = fit(elimination_weeks(df[df.season < season]), l2)
+    out = []
+    for w, g in elimination_weeks(df[df.season == season]).groupby("week"):
+        p = week_probs(g, beta)
+        k = int(g.eliminated.sum())
+        ranked = list(g.celebrity.iloc[np.argsort(-p)])
+        actual = list(g.celebrity[g.eliminated == 1])
+        out.append({"week": int(w), "theme": themes.get(w, ""), "predicted": ranked[:k], "actual": actual,
+                    "hit": bool(set(ranked[:k]) & set(actual)),
+                    "rank_of_actual": min(ranked.index(c) + 1 for c in actual),
+                    "p_actual": float(sum(p[list(g.celebrity).index(c)] for c in actual))})
+    return out
+
+
 def youtube_velocity(season):
     """Views per day on each couple's newest video, from the snapshot log (needs 2+ snapshots)."""
     f = DATA / "snapshots" / "youtube_videos.csv"
@@ -508,12 +528,19 @@ def main():
     if not this.result_known.any():
         freeze(season, last_week, scores_in, out_week, themes.get(last_week, ""))
     record = scorecard(df, season)
+    hindsight = replay_weeks(df, season, l2, themes)
 
     photos_f = DATA / "photos.csv"
-    photos = pd.read_csv(photos_f).set_index("person") if photos_f.exists() else pd.DataFrame()
-    photo = lambda name: (None if name not in photos.index else
-                          {"file": photos.loc[name, "file"], "article": photos.loc[name, "article"],
-                           "image": photos.loc[name, "image"]})
+    photos = pd.read_csv(photos_f) if photos_f.exists() else pd.DataFrame()
+    def photo(name, role):
+        if photos.empty:
+            return None
+        hit = photos[(photos.person == name) & (photos.role == role)]
+        if hit.empty:
+            return None
+        r = hit.iloc[0]
+        return {"file": r.file, "article": "" if pd.isna(r.article) else r.article,
+                "image": "" if pd.isna(r.image) else r.image}
     velocity = youtube_velocity(season)
     cast = couples[couples.season == season].set_index("celebrity")
     soc = social[social.season == season].drop_duplicates("celebrity").set_index("celebrity")
@@ -538,7 +565,8 @@ def main():
             "category": category(info.notability),
             "status": info.status, "place": None if pd.isna(info.place) else int(info.place),
             "alive": c in alive,
-            "photo": photo(c), "pro_photo": photo(pro),
+            "photo": photo(c, "celebrity"), "pro_photo": photo(pro, "pro"),
+            "couple_photo": photo(c, "couple"),
             "scores": [{"week": int(r.week), "score": None if pd.isna(r.score) else float(r.score),
                         "max": int(10 * r.n_judges), "dance": None if pd.isna(r.dance) else r.dance}
                        for r in sc.itertuples()],
@@ -571,7 +599,7 @@ def main():
         "themes": {str(k): v for k, v in themes.items()},
         "schedule": {"total_weeks": total_weeks, "finalists": finalists_n, "judges_save": bool(this.judges_save.iloc[0])},
         "couples": couples_out, "order": order, "finalists": finalists,
-        "backtest": summary, "record": record, "l2_scores": {str(k): v for k, v in l2_scores.items()},
+        "backtest": summary, "record": record, "hindsight": hindsight, "l2_scores": {str(k): v for k, v in l2_scores.items()},
         "coefficients": dict(zip(FEATURES, map(float, beta))),
         "sims": N_SIMS,
     }
