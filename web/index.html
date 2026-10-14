@@ -9,7 +9,6 @@
 <style>
   :root {
     --bg: #0d0a1f;
-    --bg2: #171233;
     --card: #1d1740;
     --line: #2f2760;
     --text: #f3eefe;
@@ -32,14 +31,24 @@
       radial-gradient(2px 2px at 35% 8%, #fff7 50%, transparent 51%);
     background-attachment: fixed;
   }
+  a { color: var(--gold2); }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 64px; }
   h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; margin: 0; }
   h2 { font-size: 26px; color: var(--gold2); margin-bottom: 4px; }
+  h3.small { font-size: 18px; color: var(--gold2); margin: 22px 0 8px; }
   .sub { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
   section { margin-top: 44px; }
 
+  /* photos */
+  .duo { display: inline-flex; flex-shrink: 0; }
+  .av { width: var(--s, 40px); height: var(--s, 40px); border-radius: 50%; object-fit: cover; object-position: 50% 20%;
+    border: 2px solid var(--gold); background: #2a2156; display: inline-grid; place-items: center;
+    font: 600 calc(var(--s, 40px) * .36)/1 Inter, sans-serif; color: var(--gold2); overflow: hidden; }
+  .duo .av + .av { margin-left: calc(var(--s, 40px) * -.28); }
+  .duo .av.pro { border-color: var(--muted); }
+
   /* hero */
-  header { text-align: center; padding: 40px 0 8px; position: relative; }
+  header { text-align: center; padding: 40px 0 8px; }
   .ball { width: 92px; height: 92px; margin: 0 auto 10px; animation: spin 14s linear infinite; filter: drop-shadow(0 0 24px #e9c46a66); }
   @keyframes spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { .ball { animation: none; } }
@@ -47,41 +56,43 @@
   header h1 { font-size: clamp(34px, 7vw, 58px); font-weight: 800; line-height: 1.05;
     background: linear-gradient(180deg, var(--gold2), var(--gold) 60%, #b8892f); -webkit-background-clip: text; background-clip: text; color: transparent; }
   header .meta { color: var(--muted); margin-top: 8px; }
-
   .verdict { margin: 28px auto 0; max-width: 640px; background: linear-gradient(135deg, #2a1d5c, #1d1740);
     border: 1px solid var(--gold); border-radius: 18px; padding: 22px 24px; text-align: center;
     box-shadow: 0 0 0 4px #e9c46a14, 0 20px 50px #0008; }
+  .verdict .duo { --s: 84px; margin: 12px 0 4px; }
   .verdict .label { color: var(--gold); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
-  .verdict .name { font-family: "Playfair Display", serif; font-size: 32px; margin: 6px 0 2px; }
+  .verdict .name { font-family: "Playfair Display", serif; font-size: 32px; margin: 2px 0; }
   .verdict .pct { font-size: 15px; color: var(--muted); }
   .verdict .pct b { color: var(--danger); font-size: 20px; }
 
   /* danger bars */
   .bars { display: grid; gap: 8px; }
-  .bar { display: grid; grid-template-columns: minmax(150px, 230px) 1fr 64px; align-items: center; gap: 12px;
+  .bar { display: grid; grid-template-columns: minmax(200px, 280px) 1fr 64px; align-items: center; gap: 12px;
     background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
-  .bar .who b { display: block; }
-  .bar .who span { color: var(--muted); font-size: 12px; }
+  .who { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .who .duo { --s: 38px; }
+  .who b { display: block; }
+  .who span { color: var(--muted); font-size: 12px; }
   .track { height: 12px; background: #ffffff10; border-radius: 99px; overflow: hidden; }
   .fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--gold), var(--pink)); }
   .bar .p { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
   .bar.top { border-color: var(--danger); }
-  .pill { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 99px; background: #ffffff12; color: var(--muted); margin-left: 6px; }
 
   /* timeline */
-  .timeline { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .timeline { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
   .wk { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  .wk .duo { --s: 34px; margin-top: 8px; }
   .wk .n { color: var(--gold); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
   .wk .t { color: var(--muted); font-size: 12px; min-height: 18px; }
-  .wk .out { font-family: "Playfair Display", serif; font-size: 18px; margin-top: 6px; }
+  .wk .out { font-family: "Playfair Display", serif; font-size: 18px; margin-top: 4px; }
   .wk .pp { color: var(--muted); font-size: 12px; }
   .wk.finale { border-color: var(--gold); background: linear-gradient(160deg, #3a2a7a, #1d1740); grid-column: span 2; }
 
-  /* odds table */
+  /* tables */
   .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
   table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 13px; }
   th, td { padding: 9px 10px; text-align: center; white-space: nowrap; }
-  th { color: var(--muted); font-weight: 500; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--card); }
+  th { color: var(--muted); font-weight: 500; border-bottom: 1px solid var(--line); background: var(--card); }
   td:first-child, th:first-child { text-align: left; position: sticky; left: 0; background: var(--card); }
   tr + tr td { border-top: 1px solid #ffffff08; }
   td.heat { min-width: 48px; }
@@ -89,29 +100,42 @@
   .gold { color: var(--gold2); font-weight: 600; }
 
   /* cards */
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
   .card.gone { opacity: .55; }
+  .photos { display: grid; grid-template-columns: 1fr 1fr; height: 150px; background: #2a2156; }
+  .photos > * { width: 100%; height: 150px; object-fit: cover; object-position: 50% 18%; display: grid; place-items: center;
+    font: 600 34px/1 "Playfair Display", serif; color: var(--gold2); }
+  .photos > .ph-pro { border-left: 2px solid var(--bg); }
+  .photos > .initials { background: linear-gradient(160deg, #3a2a7a, #241c4d); }
+  .card .body { padding: 12px 14px 14px; }
   .card h3 { font-size: 18px; }
   .card .pro { color: var(--muted); font-size: 13px; }
-  .card .note { color: var(--muted); font-size: 12px; margin: 2px 0 8px; min-height: 18px; }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 99px; background: #e9c46a22; color: var(--gold2); margin-top: 6px; }
+  .card .note { color: var(--muted); font-size: 12px; margin: 4px 0 6px; min-height: 18px; }
   .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; font-size: 12px; margin-top: 8px; }
   .stats div span { display: block; color: var(--muted); font-size: 11px; }
   .stats div b { font-size: 14px; }
   svg.spark { width: 100%; height: 44px; display: block; }
+  .meter { height: 6px; border-radius: 99px; background: #ffffff12; position: relative; margin-top: 4px; }
+  .meter i { position: absolute; top: 0; bottom: 0; border-radius: 99px; background: var(--teal); }
+  .meter::after { content: ""; position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--muted); }
 
   /* track record */
-  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
   .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
-  .kpi b { font-family: "Playfair Display", serif; font-size: 32px; color: var(--gold2); display: block; }
+  .kpi b { font-family: "Playfair Display", serif; font-size: 30px; color: var(--gold2); display: block; }
   .kpi span { color: var(--muted); font-size: 13px; }
-  .live-bt { margin-top: 12px; display: grid; gap: 6px; }
-  .live-bt div { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 13px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+  .panel p { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+  svg.cal { width: 100%; display: block; }
   .ok { color: var(--teal); font-weight: 600; } .miss { color: var(--danger); font-weight: 600; }
-  .how { color: var(--muted); font-size: 14px; max-width: 760px; }
-  .how code { color: var(--gold2); }
-  footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 56px; }
+  .how { color: var(--muted); font-size: 14px; max-width: 780px; }
+  footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 56px; line-height: 1.7; }
+  footer details { margin-top: 6px; }
 
+  @media (max-width: 720px) { .two { grid-template-columns: 1fr; } }
   @media (max-width: 560px) {
     .bar { grid-template-columns: 1fr 52px; }
     .bar .track { grid-column: 1 / -1; grid-row: 2; }
@@ -148,7 +172,7 @@
 
   <section>
     <h2>Projected elimination path</h2>
-    <p class="sub">Most likely couple to go home each remaining week, based on <span id="nsims"></span> simulated seasons.</p>
+    <p class="sub" id="path-sub"></p>
     <div class="timeline" id="timeline"></div>
   </section>
 
@@ -160,7 +184,7 @@
 
   <section>
     <h2>The couples</h2>
-    <p class="sub">Judges' scores each week (sparkline, % of max) plus popularity: official DWTS YouTube views and Wikipedia pageviews over the last 7 days.</p>
+    <p class="sub">Judges' scores each week (sparkline, % of max), fan support the model has inferred, and views across platforms.</p>
     <div class="cards" id="cards"></div>
   </section>
 
@@ -168,7 +192,17 @@
     <h2>Track record</h2>
     <p class="sub" id="bt-sub"></p>
     <div class="kpis" id="kpis"></div>
-    <div class="live-bt" id="livebt"></div>
+    <div class="two" style="margin-top:16px">
+      <div class="panel">
+        <b>Are the odds honest?</b>
+        <svg class="cal" id="cal" viewBox="0 0 320 240" role="img" aria-label="Calibration: predicted vs actual elimination rate"></svg>
+        <p id="cal-note"></p>
+      </div>
+      <div class="panel">
+        <b>Live record: odds frozen before each show</b>
+        <div id="record"></div>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -176,7 +210,10 @@
     <div class="how" id="how"></div>
   </section>
 
-  <footer>Data from Wikipedia season pages, Wikimedia pageviews and YouTube. Just for fun, so don't stake your vote on it.</footer>
+  <footer>
+    Data from Wikipedia season pages, Wikimedia pageviews and YouTube. Just for fun, so don't stake your vote on it.
+    <details><summary>Photo credits</summary><div id="credits"></div></details>
+  </footer>
 </div>
 
 <script src="data.js"></script>
@@ -186,23 +223,36 @@ const pct = (x, d = 0) => x == null ? "–" : (x * 100).toFixed(d) + "%";
 const fmt = n => n == null ? "–" : n >= 1e6 ? (n / 1e6).toFixed(1) + "M" : n >= 1e3 ? Math.round(n / 1e3) + "K" : Math.round(n);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const $ = id => document.getElementById(id);
+const initials = name => name.replace(/[^A-Za-z ]/g, "").split(" ").filter(Boolean).slice(0, 2).map(w => w[0]).join("");
+
+// one round photo (or a monogram when Wikipedia has no picture)
+const av = (photo, name, cls = "") => photo
+  ? `<img class="av ${cls}" src="${esc(photo.file)}" alt="${esc(name)}" loading="lazy">`
+  : `<span class="av ${cls}" role="img" aria-label="${esc(name)}">${esc(initials(name))}</span>`;
+const duo = c => `<span class="duo">${av(c.photo, c.celebrity)}${av(c.pro_photo, c.pro, "pro")}</span>`;
+const tile = (photo, name, cls) => photo
+  ? `<img class="${cls}" src="${esc(photo.file)}" alt="${esc(name)}" loading="lazy">`
+  : `<div class="${cls} initials" role="img" aria-label="${esc(name)}">${esc(initials(name))}</div>`;
 
 const alive = D.couples.filter(c => c.alive);
 const wk = String(D.week);
 alive.forEach(c => c.now = c.p_week[wk] ?? 0);
 alive.sort((a, b) => b.now - a.now);
+const byName = Object.fromEntries(D.couples.map(c => [c.celebrity, c]));
 
+// ---- hero
 $("title").textContent = `Season ${D.season}`;
 $("meta").textContent = `Week ${D.week}: ${D.theme} · ${alive.length} couples left · updated ${D.generated}`;
 const leader = alive[0];
 $("verdict").innerHTML = `<div class="label">Predicted to go home · Week ${D.week}</div>
+  ${duo(leader)}
   <div class="name">${esc(leader.couple)}</div>
   <div class="pct"><b>${pct(leader.now)}</b> chance of elimination · next most at risk: ${esc(alive[1].celebrity)} (${pct(alive[1].now)})</div>`;
 
-const anyScored = alive.some(c => c.scores.some(s => s.week === D.week && s.score != null));
+// ---- danger zone
 $("danger-sub").textContent = D.week_scored
-  ? `Week ${D.week} (${D.theme}) judges' scores are in. Odds blend scores, form, partner and fan buzz.`
-  : anyScored
+  ? `Week ${D.week} (${D.theme}) judges' scores are in. Odds blend scores, form, partner, fan support and views.`
+  : D.scores_in
     ? `Some Week ${D.week} scores are still to come; missing ones are simulated from each couple's form.`
     : `Week ${D.week} (${D.theme}) hasn't aired yet, so scores are simulated from each couple's form. Re-run after the show for sharper odds.`;
 const maxP = Math.max(...alive.map(c => c.now));
@@ -210,22 +260,28 @@ $("bars").innerHTML = alive.map((c, i) => {
   const s = c.scores.find(x => x.week === D.week);
   const score = s && s.score != null ? `${s.score}/${s.max}` : "not danced yet";
   return `<div class="bar ${i === 0 ? "top" : ""}">
-    <div class="who"><b>${esc(c.couple)}</b><span>${esc(s?.dance || "")} · ${score}</span></div>
+    <div class="who">${duo(c)}<div><b>${esc(c.couple)}</b><span>${esc(s?.dance || "")}${s?.dance ? " · " : ""}${score}</span></div></div>
     <div class="track"><div class="fill" style="width:${(c.now / maxP * 100).toFixed(1)}%"></div></div>
     <div class="p">${pct(c.now)}</div></div>`;
 }).join("");
 
-$("nsims").textContent = D.sims.toLocaleString();
-const byName = Object.fromEntries(D.couples.map(c => [c.celebrity, c]));
+// ---- elimination path
+const S = D.schedule;
+$("path-sub").textContent = `Most likely couple to go home each remaining week, from ${D.sims.toLocaleString()} simulated seasons. `
+  + `Schedule read from Wikipedia: ${S.total_weeks} weeks, ${S.finalists} couples in the finale`
+  + (S.judges_save ? ", judges' save in effect." : ", no judges' save this season.");
 $("timeline").innerHTML = D.order.map(o => {
-  const names = o.out.map(n => esc(byName[n].couple)).join(" &amp; ") || "No elimination";
-  const ps = o.out.map(n => pct(byName[n].p_week[String(o.week)])).join(" / ");
+  const out = o.out.map(n => byName[n]);
+  const names = out.map(c => esc(c.couple)).join(" &amp; ") || "No elimination";
+  const ps = out.map(c => pct(c.p_week[String(o.week)])).join(" / ");
   return `<div class="wk"><div class="n">Week ${o.week}${o.n > 1 ? " · double" : ""}</div>
-    <div class="t">${esc(D.themes[o.week] || "")}</div><div class="out">${names}</div><div class="pp">${ps} chance that week</div></div>`;
+    <div class="t">${esc(D.themes[o.week] || "")}</div>${out.map(duo).join(" ")}<div class="out">${names}</div><div class="pp">${ps} chance that week</div></div>`;
 }).join("") + `<div class="wk finale"><div class="n">Finale · Mirrorball</div><div class="t">Projected finalists</div>
+  ${D.finalists.map(n => duo(byName[n])).join(" ")}
   <div class="out">🏆 ${esc(byName[D.finalists[0]].couple)}</div>
   <div class="pp">${D.finalists.map(n => `${esc(byName[n].celebrity)} ${pct(byName[n].p_win)}`).join(" · ")}</div></div>`;
 
+// ---- odds table
 const weeks = Object.keys(leader.p_week);
 const heat = p => `background: rgba(255, 93, 108, ${Math.min(p * 1.6, .85).toFixed(2)})`;
 const rows = [...D.couples].sort((a, b) => (b.p_win - a.p_win) || (b.p_final - a.p_final) || ((a.place ?? 99) - (b.place ?? 99)));
@@ -235,59 +291,100 @@ $("odds").innerHTML = `<tr><th>Couple</th>${weeks.map(w => `<th>Wk ${w}<br>out</
        <td>${pct(c.p_final)}</td><td class="gold">${pct(c.p_win, 1)}</td></tr>`
     : `<tr class="out-row"><td>${esc(c.couple)}</td><td colspan="${weeks.length + 2}">${esc(c.status)}</td></tr>`).join("");
 
+// ---- couple cards
 function spark(scores) {
   const pts = scores.filter(s => s.score != null).map(s => [s.week, s.score / s.max]);
   if (pts.length < 2) return `<svg class="spark"></svg>`;
   const xs = w => 4 + (w - 1) / (D.week - 1 || 1) * 92, ys = v => 40 - (v - .3) / .7 * 36;
   const d = pts.map(([w, v], i) => `${i ? "L" : "M"}${xs(w).toFixed(1)} ${ys(v).toFixed(1)}`).join("");
-  return `<svg class="spark" viewBox="0 0 100 44" preserveAspectRatio="none"><path d="${d}" fill="none" stroke="#e9c46a" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  return `<svg class="spark" viewBox="0 0 100 44" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" fill="none" stroke="#e9c46a" stroke-width="2" vector-effect="non-scaling-stroke"/>
     ${pts.map(([w, v]) => `<circle cx="${xs(w)}" cy="${ys(v)}" r="1.6" fill="#f7e2a1"/>`).join("")}</svg>`;
 }
+// fan rating: + = survived danger (fans saving them), - = landed in trouble despite scores
+const fanMeter = r => {
+  const w = Math.min(Math.abs(r) / 0.6, 1) * 50;
+  return `<div class="meter" title="fan rating ${r.toFixed(2)}"><i style="left:${r >= 0 ? 50 : 50 - w}%;width:${w}%"></i></div>`;
+};
 const cardOrder = [...alive, ...D.couples.filter(c => !c.alive).sort((a, b) => a.place - b.place)];
 $("cards").innerHTML = cardOrder.map(c => {
   const last = c.scores.filter(s => s.score != null).at(-1);
   const wv = c.wiki_views.filter(v => v.views != null).at(-1);
   const yt = c.social.youtube_views, ytn = c.social.youtube_videos;
   return `<div class="card ${c.alive ? "" : "gone"}">
-    <h3>${esc(c.celebrity)}</h3><div class="pro">with ${esc(c.pro)}</div><div class="note">${esc(c.notability)}</div>
+    <div class="photos">${tile(c.photo, c.celebrity, "ph-celeb")}${tile(c.pro_photo, c.pro, "ph-pro")}</div>
+    <div class="body">
+    <h3>${esc(c.celebrity)}</h3><div class="pro">with ${esc(c.pro)}</div>
+    <span class="tag">${esc(c.category)}</span>
+    <div class="note">${esc(c.notability)}</div>
     ${spark(c.scores)}
     <div class="stats">
       <div><span>Last score</span><b>${last ? `${last.score}/${last.max}` : "–"}</b></div>
       <div><span>${c.alive ? `Out wk ${D.week}` : "Result"}</span><b>${c.alive ? pct(c.now) : esc(c.status.replace(/ on .*/, ""))}</b></div>
       <div><span>YouTube views</span><b>${fmt(yt)}</b>${ytn ? ` <span style="display:inline">/${ytn} vids</span>` : ""}</div>
       <div><span>Wiki views (7d)</span><b>${fmt(wv?.views)}</b></div>
+      ${c.yt_per_day != null ? `<div><span>Newest video</span><b>+${fmt(c.yt_per_day)}/day</b></div>` : ""}
       ${c.social.instagram ? `<div><span>Instagram</span><b>${fmt(c.social.instagram)}</b></div>` : ""}
       ${c.social.tiktok ? `<div><span>TikTok</span><b>${fmt(c.social.tiktok)}</b></div>` : ""}
-      ${c.alive ? `<div><span>Finale chance</span><b>${pct(c.p_final)}</b></div><div><span>Win chance</span><b>${pct(c.p_win, 1)}</b></div>` : ""}
-    </div></div>`;
+      ${c.alive ? `<div><span>Finale chance</span><b>${pct(c.p_final)}</b></div><div><span>Win chance</span><b>${pct(c.p_win, 1)}</b></div>
+        <div style="grid-column:1/-1"><span>Fan support (inferred from surviving low scores)</span>${fanMeter(c.fan_rating)}</div>` : ""}
+    </div></div></div>`;
 }).join("");
 
+// ---- track record
 const B = D.backtest;
-$("bt-sub").textContent = `Backtest: for each of seasons ${B.seasons}, the model was trained only on earlier seasons and asked to call every elimination week (${B.weeks} weeks).`;
+$("bt-sub").textContent = `Backtest on seasons ${B.seasons} (${B.weeks} elimination weeks): every season predicted using only earlier seasons. `
+  + `Settings were tuned on seasons 11–20 so this test stays untouched.`;
 $("kpis").innerHTML = [
   [pct(B.model), "correct pick for who goes home"],
   [pct(B.top3), "eliminated couple was in the model's bottom 3"],
-  [pct(B.lowest_score), "\"lowest judges' score goes home\" baseline"],
+  [pct(B.lowest_score), "\"lowest judges' score goes home\""],
   [pct(B.random), "random guess"],
+  [B.log_loss.toFixed(2), `log loss (judges only ${B.log_loss_judges.toFixed(2)}, random ${B.log_loss_random.toFixed(2)}; lower is better)`],
 ].map(([v, l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join("");
-$("livebt").innerHTML = D.live_backtest.map(r =>
-  `<div><b>Week ${r.week}</b> ${esc(r.theme)} · predicted <b>${r.predicted.map(esc).join(", ")}</b>, actual <b>${r.actual.map(esc).join(", ")}</b> ·
-   <span class="${r.hit ? "ok" : "miss"}">${r.hit ? "✓ called it" : "✗ missed"}</span></div>`).join("");
 
+(function calibration() {
+  const L = 44, T = 14, W = 260, H = 180, x = v => L + v / .7 * W, y = v => T + H - v / .7 * H;
+  const ticks = [0, .1, .2, .3, .4, .5, .6, .7];
+  let s = ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${T + H}" stroke="#ffffff10"/><line x1="${L}" x2="${L + W}" y1="${y(t)}" y2="${y(t)}" stroke="#ffffff10"/>
+    <text x="${x(t)}" y="${T + H + 14}" fill="#a99fd0" font-size="10" text-anchor="middle">${t * 100}%</text>
+    <text x="${L - 6}" y="${y(t) + 3}" fill="#a99fd0" font-size="10" text-anchor="end">${t * 100}%</text>`).join("");
+  s += `<line x1="${x(0)}" y1="${y(0)}" x2="${x(.7)}" y2="${y(.7)}" stroke="#a99fd0" stroke-dasharray="4 4"/>`;
+  s += `<polyline fill="none" stroke="#e9c46a" stroke-width="2" points="${B.calibration.map(b => `${x(b.predicted)},${y(b.actual)}`).join(" ")}"/>`;
+  s += B.calibration.map(b => `<circle cx="${x(b.predicted)}" cy="${y(b.actual)}" r="${3 + Math.sqrt(b.n) / 4}" fill="#e9c46a" fill-opacity=".85"><title>said ${pct(b.predicted)}, happened ${pct(b.actual)} (${b.n} couple-weeks)</title></circle>`).join("");
+  s += `<text x="${L + W / 2}" y="${T + H + 30}" fill="#a99fd0" font-size="11" text-anchor="middle">model's predicted chance</text>
+    <text transform="translate(12 ${T + H / 2}) rotate(-90)" fill="#a99fd0" font-size="11" text-anchor="middle">actually eliminated</text>`;
+  $("cal").innerHTML = s;
+  $("cal-note").textContent = "Each dot groups couple-weeks by the model's predicted chance. On the dashed line, \"30%\" means 30% really went home. Hover a dot for its numbers.";
+})();
+
+const R = D.record;
+const pending = `Week ${D.week} odds are frozen in <code>predictions/</code> and get graded here once the result is in.`;
+$("record").innerHTML = R.length
+  ? `<table style="margin-top:8px"><tr><th>Week</th><th>Frozen</th><th>Predicted</th><th>Actual</th><th></th></tr>${R.map(r =>
+      `<tr><td>${r.week}</td><td>${r.stage === "preshow" ? "before show" : "after scores"}</td><td>${r.predicted.map(esc).join(", ")}</td>
+       <td>${r.actual.map(esc).join(", ")} (${pct(r.p_actual)})</td><td class="${r.hit ? "ok" : "miss"}">${r.hit ? "✓" : "✗ #" + r.rank_of_actual}</td></tr>`).join("")}</table><p>${pending}</p>`
+  : `<p>No graded weeks yet. ${pending} Earlier weeks of this season can't be graded honestly, because their odds were never saved before the shows aired.</p>`;
+
+// ---- how it works
 const C = D.coefficients;
-const sign = v => (v > 0 ? "raises" : "lowers");
+const w = v => `<code>${v >= 0 ? "+" : ""}${v.toFixed(2)}</code>`;
 $("how").innerHTML = `<p>Like the World Cup models that turn team ratings into match odds and then simulate the tournament, this treats every elimination night as a race to the bottom.
-Each couple gets a <b>danger rating</b> from what has decided past eliminations:</p>
+Each couple gets a <b>danger rating</b>, a weighted sum of the inputs below (positive weight = more likely to go home):</p>
 <ul>
-  <li><b>Judges' score this week</b> vs. the rest of the field (a higher score ${sign(C.score_z)} risk; weight ${C.score_z.toFixed(2)}).</li>
-  <li><b>Form and trend</b> across all previous weeks (${C.form_z.toFixed(2)}, ${C.trend.toFixed(2)}).</li>
-  <li><b>Times in the bottom two</b> already (${C.bottom_prev.toFixed(2)}), and <b>escapes</b>: weeks survived with a bottom-two judges' score, which only fan votes can explain (${C.escapes.toFixed(2)}).</li>
-  <li><b>Pro partner's track record</b> in earlier seasons (${C.pro_strength.toFixed(2)}).</li>
-  <li><b>Views across platforms</b>: median views per official DWTS YouTube performance video, plus Instagram/TikTok followers if you add them (more views ${sign(C.social_z)} risk; ${C.social_z.toFixed(2)}).
-    Wikipedia pageviews from the week before each show are in too, but they barely matter (${C.wiki_z.toFixed(2)}): big Wikipedia pages belong to already-famous stars, not necessarily to the ones with voting fanbases.</li>
+  <li><b>Judges' score this week</b> vs. the field ${w(C.score_z)}, with extra weight in judges'-save seasons ${w(C.score_z_save)}, plus prior form ${w(C.form_z)} and trend ${w(C.trend)}.</li>
+  <li><b>Times in the bottom two</b> already ${w(C.bottom_prev)}.</li>
+  <li><b>Fan rating</b> ${w(C.fan_rating)}: works like an Elo rating for the audience. A couple earns credit each week they survive a score the judges alone would have sent home, and loses it when they land in the bottom two anyway.</li>
+  <li><b>Pro partner's track record</b> in earlier seasons ${w(C.pro_strength)}.</li>
+  <li><b>Celebrity type</b> vs. actors/TV hosts: athlete ${w(C.cat_athlete)}, reality star ${w(C.cat_reality)}, musician ${w(C.cat_music)}, social media ${w(C.cat_social)}.</li>
+  <li><b>Views across platforms</b>: YouTube views per official performance video (plus Instagram/TikTok when added) ${w(C.social_z)}, and Wikipedia pageviews ${w(C.wiki_z)}. Every run also logs these counts so future seasons get clean week-by-week data.</li>
 </ul>
-<p>The ratings go through a softmax so each week's odds add up to 100%. Weights are fit as a conditional logit on every elimination since season 1.
-Future weeks are simulated ${D.sims.toLocaleString()} times, with judges' scores drawn around each couple's recent form; the finale is decided by buzz plus form.</p>`;
+<p>A softmax turns the ratings into odds that add to 100% each week. The weights are fit by maximum likelihood on every elimination since season 1, with a ridge penalty (strength ${B.l2}) chosen on older seasons.
+Future weeks are simulated ${D.sims.toLocaleString()} times. Projected scores follow each couple's recent form, shifted by the announced dance style where known; the finale is decided by buzz plus form.</p>`;
+
+// ---- credits
+const credited = D.couples.flatMap(c => [[c.celebrity, c.photo], [c.pro, c.pro_photo]]).filter(([, p]) => p);
+$("credits").innerHTML = credited.map(([n, p]) => `<a href="${esc(p.image)}" target="_blank" rel="noopener">${esc(n)}</a>`).join(" · ")
+  + "<br>Photos from Wikimedia Commons via each person's Wikipedia article; licenses on each file page.";
 </script>
 </body>
 </html>

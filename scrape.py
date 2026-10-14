@@ -81,10 +81,15 @@ def parse_cast(soup, season):
         a = cells[0].find("a", href=True) if cells else None
         if a and "/wiki/" in a["href"]:
             links[clean(cells[0].get_text(" ", strip=True))] = unquote(a["href"].split("/wiki/")[1])
+    by_text = {}  # any linked name in the table -> its article (used for pro partners)
+    for a in table.find_all("a", href=True):
+        if "/wiki/" in a["href"]:
+            by_text.setdefault(clean(a.get_text(" ", strip=True)), unquote(a["href"].split("/wiki/")[1]))
     out = []
     for r in rows[1:]:
         if len(r) <= si:
             continue
+        pro_link = next((v for k, v in by_text.items() if k and r[pi].startswith(k)), "")
         celeb = re.sub(r"\s*Season \d+.*$", "", r[ci]).strip()  # all-stars "Name Season 4"
         out.append({
             "season": season,
@@ -93,8 +98,24 @@ def parse_cast(soup, season):
             "notability": r[ni] if ni is not None else "",
             "status": r[si],
             "wiki": links.get(r[ci], ""),
+            "pro_wiki": pro_link,
         })
     return out
+
+
+def season_weeks(soup):
+    """Number of weeks in the season, read from the scoring chart's header (1, 2, ... N)."""
+    for t in soup.select("table.wikitable"):
+        cap = t.caption.get_text(" ", strip=True) if t.caption else ""
+        if "Weekly scores" in cap:
+            head = []
+            for r in grid(t):
+                if any("&" in c for c in r):  # first couple row: header is over
+                    break
+                head += r
+            nums = [int(c) for c in head if re.fullmatch(r"\d{1,2}", c)]
+            return max(nums) if nums else None
+    return None
 
 
 def week_tables(soup):
@@ -209,7 +230,7 @@ def place_of(status, n_cast):
 
 
 def main(refresh_current=True):
-    all_cast, all_perf = [], []
+    all_cast, all_perf, meta = [], [], []
     for n in range(1, CURRENT_SEASON + 1):
         soup = fetch(n, refresh=(refresh_current and n == CURRENT_SEASON))
         cast = parse_cast(soup, n)
@@ -223,11 +244,15 @@ def main(refresh_current=True):
             c["couple"] = label.get(c["celebrity"])
         for c in cast:
             c["place"] = place_of(c["status"], len(cast))
+        # judges'-save era: weekly tables carry a "Judges' votes to save" column
+        save = len(re.findall(r"Judges.{0,3} votes? to save", soup.get_text(" ")))
+        meta.append({"season": n, "weeks": season_weeks(soup), "judges_save": int(save >= 3)})
         all_cast += cast
         all_perf += perfs
         print(f"season {n:>2}: {len(cast):>2} couples, {len(perfs):>3} performances", file=sys.stderr)
     pd.DataFrame(all_cast).to_csv(ROOT / "data" / "couples.csv", index=False)
     pd.DataFrame(all_perf).to_csv(ROOT / "data" / "performances.csv", index=False)
+    pd.DataFrame(meta).to_csv(ROOT / "data" / "seasons.csv", index=False)
 
 
 if __name__ == "__main__":

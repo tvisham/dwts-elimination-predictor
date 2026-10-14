@@ -16,7 +16,7 @@ import json
 import re
 import sys
 import time
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from urllib.parse import quote, quote_plus
 
@@ -26,6 +26,7 @@ import requests
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 CACHE = DATA / "cache"
+SNAP = DATA / "snapshots"
 UA = {"User-Agent": "dwts-predictor/0.1 (personal hobby project)"}
 BROWSER = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -116,14 +117,14 @@ def parse_views(text):
 def youtube_views(celebrity, pro, season_year=None, fresh_only=True):
     """Views of official DWTS-channel videos for this couple.
 
-    Returns (total views, median views per video, number of videos found).
+    Returns (total views, median views per video, number of videos, [video dicts]).
     """
     q = f"{celebrity} {pro} Dancing with the Stars {season_year or ''}".strip()
     r = requests.get("https://www.youtube.com/results?search_query=" + quote_plus(q),
                      headers=BROWSER, timeout=30)
     m = re.search(r"var ytInitialData = (\{.*?\});</script>", r.text)
     if not m:
-        return None, None, 0
+        return None, None, 0, []
     names = [t.lower() for t in celebrity.replace('"', "").split()]
     first, rest = names[0], [t for t in names[1:] if len(t) > 2]
     found = {}
@@ -138,7 +139,10 @@ def youtube_views(celebrity, pro, season_year=None, fresh_only=True):
                 fresh = not re.search(r"year", age) or not fresh_only
                 if (owner.lower().startswith("dancing with the stars") and fresh
                         and first in title and (not rest or any(t in title for t in rest))):
-                    found[v["videoId"]] = parse_views(v.get("viewCountText", {}).get("simpleText", ""))
+                    found[v["videoId"]] = {
+                        "video_id": v["videoId"], "title": title, "published": age,
+                        "views": parse_views(v.get("viewCountText", {}).get("simpleText", "")),
+                    }
             for x in o.values():
                 walk(x)
         elif isinstance(o, list):
@@ -146,10 +150,10 @@ def youtube_views(celebrity, pro, season_year=None, fresh_only=True):
                 walk(x)
 
     walk(json.loads(m.group(1)))
-    vals = sorted(found.values())
+    vals = sorted(f["views"] for f in found.values())
     if not vals:
-        return None, None, 0
-    return sum(vals), vals[len(vals) // 2], len(vals)
+        return None, None, 0, []
+    return sum(vals), vals[len(vals) // 2], len(vals), list(found.values())
 
 
 def youtube_history(couples, seasons):
@@ -166,7 +170,7 @@ def youtube_history(couples, seasons):
         if (c.season, c.celebrity) in done:
             continue
         try:
-            total, med, n = youtube_views(c["celebrity"], c["pro"].split("  ")[0], fresh_only=False)
+            total, med, n, _ = youtube_views(c["celebrity"], c["pro"].split("  ")[0], fresh_only=False)
         except Exception as e:
             print(f"  youtube failed for {c['celebrity']}: {e}", file=sys.stderr)
             continue
@@ -184,17 +188,40 @@ def social_live(couples, season):
         pd.DataFrame({"celebrity": cast.celebrity, "instagram": "", "tiktok": ""}).to_csv(manual_f, index=False)
     manual = pd.read_csv(manual_f)
     year = date.today().year
-    rows = []
+    rows, videos = [], []
     for _, c in cast.iterrows():
         try:
-            yt, med, n = youtube_views(c["celebrity"], c["pro"], year)
+            yt, med, n, vids = youtube_views(c["celebrity"], c["pro"], year)
         except Exception as e:  # network hiccup: keep going, YouTube is optional
             print(f"  youtube failed for {c['celebrity']}: {e}", file=sys.stderr)
-            yt, med, n = None, None, 0
+            yt, med, n, vids = None, None, 0, []
+        videos += [{"celebrity": c["celebrity"], **v} for v in vids]
         print(f"  youtube {c['celebrity']}: {yt} views over {n} videos", file=sys.stderr)
         rows.append({"celebrity": c["celebrity"], "youtube_views": yt, "yt_median": med, "youtube_videos": n})
         time.sleep(1)
-    return pd.DataFrame(rows).merge(manual, on="celebrity", how="left")
+    return pd.DataFrame(rows).merge(manual, on="celebrity", how="left"), pd.DataFrame(videos)
+
+
+def snapshot(season, week, social, videos, wiki):
+    """Append today's numbers to the logs instead of overwriting them.
+
+    Over a season this builds point-in-time data: what each couple's views were *before*
+    each show, and how fast each new video gains views (which today's totals can't show).
+    """
+    SNAP.mkdir(parents=True, exist_ok=True)
+    taken = datetime.now().isoformat(timespec="minutes")
+    w = wiki[(wiki.season == season) & (wiki.week == week)][["celebrity", "wiki_views"]]
+    log = social.merge(w, on="celebrity", how="left").assign(taken_at=taken, season=season, week=week)
+    cols = ["taken_at", "season", "week", "celebrity", "youtube_views", "yt_median",
+            "youtube_videos", "wiki_views", "instagram", "tiktok"]
+    append(SNAP / "views_log.csv", log.reindex(columns=cols))
+    if len(videos):
+        append(SNAP / "youtube_videos.csv", videos.assign(taken_at=taken, season=season)
+               .reindex(columns=["taken_at", "season", "celebrity", "video_id", "title", "published", "views"]))
+
+
+def append(path, df):
+    df.to_csv(path, mode="a", header=not path.exists(), index=False)
 
 
 def main():
@@ -206,7 +233,10 @@ def main():
     if "--no-youtube" not in sys.argv:
         live = couples.season.max()
         youtube_history(couples, range(YT_HISTORY_FROM, live))
-        social_live(couples, couples.season.max()).to_csv(DATA / "social_live.csv", index=False)
+        social, videos = social_live(couples, live)
+        social.to_csv(DATA / "social_live.csv", index=False)
+        week = int(perfs[perfs.season == live].week.max())
+        snapshot(live, week, social, videos, pd.read_csv(DATA / "wiki_views.csv"))
 
 
 if __name__ == "__main__":
