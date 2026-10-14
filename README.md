@@ -1,4 +1,4 @@
-# DWTS Elimination Predictor 🪩
+# DWTS Elimination Predictor
 
 Predicts who goes home each week of *Dancing with the Stars*. It combines judges' scores, form, pro partner, and how many views each celebrity gets, then simulates the rest of the season thousands of times (the same approach as the World Cup ML predictors).
 
