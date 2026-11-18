@@ -1,15 +1,15 @@
 """Collect popularity ("views") signals for each celebrity.
 
-  Wikipedia pageviews  - daily, every celebrity from season 21 on (API starts July 2015).
-                         Used both for training and for the live season.
   YouTube              - views on the official DWTS channel's performance videos for the
                          live season (scraped from search results, no API key needed).
-  Instagram / TikTok   - those platforms block anonymous scraping, so fill in
-                         data/social_manual.csv by hand (follower counts); blank is fine.
+  Instagram likes      - see instagram.py (the viewer-vote estimate).
+  TikTok               - blocks anonymous scraping; add follower counts to
+                         data/social_manual.csv by hand if you like (blank is fine).
+
+Wikipedia pageviews were dropped: they tracked fame, not voting fanbases.
 
 Outputs
   data/week_dates.csv   season, week, date        (approximate air date of each week)
-  data/wiki_views.csv   season, week, celebrity, wiki_views   (7 days before air date)
   data/social_live.csv  celebrity, youtube_views, youtube_videos, instagram, tiktok
 """
 import json
@@ -18,14 +18,13 @@ import sys
 import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from urllib.parse import quote, quote_plus
+from urllib.parse import quote_plus
 
 import pandas as pd
 import requests
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
-CACHE = DATA / "cache"
 SNAP = DATA / "snapshots"
 UA = {"User-Agent": "dwts-predictor/0.1 (personal hobby project)"}
 BROWSER = {
@@ -33,7 +32,6 @@ BROWSER = {
                   "(KHTML, like Gecko) Chrome/130.0 Safari/537.36",
     "Accept-Language": "en-US,en;q=0.9",
 }
-FIRST_PAGEVIEW_SEASON = 21
 YT_HISTORY_FROM = 28  # official channel posts every performance from here on
 MONTHS = "January February March April May June July August September October November December".split()
 
@@ -59,53 +57,6 @@ def week_dates(couples, perfs):
         week1 = sorted(anchors)[len(anchors) // 2]  # median is robust to two-night weeks
         for w in sorted(perfs[perfs.season == season].week.unique()):
             rows.append({"season": season, "week": int(w), "date": week1 + timedelta(days=7 * (int(w) - 1))})
-    return pd.DataFrame(rows)
-
-
-def wiki_daily(title, start, end):
-    CACHE.mkdir(parents=True, exist_ok=True)
-    f = CACHE / f"wiki_{re.sub(r'[^A-Za-z0-9]+', '_', title)}_{start:%Y%m%d}_{end:%Y%m%d}.json"
-    if f.exists() and end < date.today() - timedelta(days=2):
-        return json.loads(f.read_text())
-    url = ("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/"
-           f"all-access/user/{quote(title, safe='')}/daily/{start:%Y%m%d}/{end:%Y%m%d}")
-    for attempt in range(6):
-        r = requests.get(url, headers=UA, timeout=30)
-        if r.status_code != 429:
-            break
-        time.sleep(2 ** attempt)  # rate limited: back off
-    if r.status_code == 404:  # article has no views in range
-        views = {}
-    elif not r.ok:
-        print(f"  pageviews {title}: HTTP {r.status_code}", file=sys.stderr)
-        return {}  # don't cache failures
-    else:
-        views = {i["timestamp"][:8]: i["views"] for i in r.json().get("items", [])}
-    f.write_text(json.dumps(views))
-    time.sleep(0.2)
-    return views
-
-
-def wiki_views(couples, perfs, dates):
-    yesterday = date.today() - timedelta(days=1)
-    rows = []
-    in_week = perfs[["season", "week", "celebrity"]].drop_duplicates()
-    for season, cast in couples[couples.season >= FIRST_PAGEVIEW_SEASON].groupby("season"):
-        sd = dates[dates.season == season]
-        if sd.empty:
-            continue
-        start, end = sd.date.min() - timedelta(days=14), min(sd.date.max(), yesterday)
-        print(f"wiki pageviews season {season}", file=sys.stderr)
-        for _, c in cast.iterrows():
-            daily = wiki_daily(c["wiki"], start, end) if isinstance(c["wiki"], str) else {}
-            for _, wk in sd.iterrows():
-                if not ((in_week.season == season) & (in_week.week == wk.week)
-                        & (in_week.celebrity == c["celebrity"])).any():
-                    continue
-                win = [(wk.date - timedelta(days=k)).strftime("%Y%m%d") for k in range(1, 8)]
-                vals = [daily[d] for d in win if d in daily]
-                rows.append({"season": season, "week": wk.week, "celebrity": c["celebrity"],
-                             "wiki_views": sum(vals) / len(vals) * 7 if vals else None})
     return pd.DataFrame(rows)
 
 
@@ -202,7 +153,7 @@ def social_live(couples, season):
     return pd.DataFrame(rows).merge(manual, on="celebrity", how="left"), pd.DataFrame(videos)
 
 
-def snapshot(season, week, social, videos, wiki):
+def snapshot(season, week, social, videos):
     """Append today's numbers to the logs instead of overwriting them.
 
     Over a season this builds point-in-time data: what each couple's views were *before*
@@ -210,10 +161,9 @@ def snapshot(season, week, social, videos, wiki):
     """
     SNAP.mkdir(parents=True, exist_ok=True)
     taken = datetime.now().isoformat(timespec="minutes")
-    w = wiki[(wiki.season == season) & (wiki.week == week)][["celebrity", "wiki_views"]]
-    log = social.merge(w, on="celebrity", how="left").assign(taken_at=taken, season=season, week=week)
+    log = social.assign(taken_at=taken, season=season, week=week)
     cols = ["taken_at", "season", "week", "celebrity", "youtube_views", "yt_median",
-            "youtube_videos", "wiki_views", "instagram", "tiktok"]
+            "youtube_videos", "instagram", "tiktok"]
     append(SNAP / "views_log.csv", log.reindex(columns=cols))
     if len(videos):
         append(SNAP / "youtube_videos.csv", videos.assign(taken_at=taken, season=season)
@@ -229,14 +179,13 @@ def main():
     perfs = pd.read_csv(DATA / "performances.csv")
     dates = week_dates(couples, perfs)
     dates.to_csv(DATA / "week_dates.csv", index=False)
-    wiki_views(couples, perfs, dates).to_csv(DATA / "wiki_views.csv", index=False)
     if "--no-youtube" not in sys.argv:
         live = couples.season.max()
         youtube_history(couples, range(YT_HISTORY_FROM, live))
         social, videos = social_live(couples, live)
         social.to_csv(DATA / "social_live.csv", index=False)
         week = int(perfs[perfs.season == live].week.max())
-        snapshot(live, week, social, videos, pd.read_csv(DATA / "wiki_views.csv"))
+        snapshot(live, week, social, videos)
 
 
 if __name__ == "__main__":

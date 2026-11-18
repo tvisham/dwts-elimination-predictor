@@ -3574,13 +3574,65 @@ season,week,theme,couple,score,n_judges,dance,result,celebrity
 35,5,Super Bowl Night,Jenna & Val,36.0,4,Paso doble,Safe,Jenna Dewan
 35,5,Super Bowl Night,Harry & Jenna,33.0,4,Samba,Safe,Harry Shum Jr.
 35,5,Super Bowl Night,Ezra & Daniella,36.0,4,Salsa,Safe,Ezra Frech
-35,6,Dedication Night,Amber & Pasha,,3,,,Amber Glenn
-35,6,Dedication Night,Connor & Rylee,,3,,,Connor Wood
-35,6,Dedication Night,Ezra & Daniella,,3,,,Ezra Frech
-35,6,Dedication Night,Harry & Jenna,,3,,,Harry Shum Jr.
-35,6,Dedication Night,Jackson & Emma,,3,,,Jackson Olson
-35,6,Dedication Night,Jenna & Val,,3,,,Jenna Dewan
-35,6,Dedication Night,Julia & Ezra,,3,,,Julia Stiles
-35,6,Dedication Night,Maura & Mark,,3,,,Maura Higgins
-35,6,Dedication Night,Tatyana & Jan,,3,,,Tatyana Ali
-35,6,Dedication Night,Tyler & Sharna,,3,,,Tyler Cameron
+35,6,Dedication Night,Ezra & Daniella,37.0,4,Contemporary,,Ezra Frech
+35,6,Dedication Night,Tatyana & Jan,32.0,4,Viennese waltz,,Tatyana Ali
+35,6,Dedication Night,Maura & Mark,35.0,4,Paso doble,,Maura Higgins
+35,6,Dedication Night,Jackson & Emma,32.0,4,Quickstep,,Jackson Olson
+35,6,Dedication Night,Amber & Pasha,38.0,4,Contemporary,,Amber Glenn
+35,6,Dedication Night,Jenna & Alan,37.0,4,Viennese waltz,,Jenna Dewan
+35,6,Dedication Night,Harry & Jenna,36.0,4,Foxtrot,,Harry Shum Jr.
+35,6,Dedication Night,Connor & Rylee,32.0,4,Viennese waltz,,Connor Wood
+35,6,Dedication Night,Tyler & Sharna,32.0,4,Contemporary,,Tyler Cameron
+35,6,Dedication Night,Julia & Ezra,36.0,4,Contemporary,,Julia Stiles
+35,7,Horror Movie Night,Julia & Ezra,26.0,4,Argentine tango,Safe,Julia Stiles
+35,7,Horror Movie Night,Harry & Jenna,40.0,4,Contemporary,Safe,Harry Shum Jr.
+35,7,Horror Movie Night,Tatyana & Jan,28.0,4,Paso doble,Safe,Tatyana Ali
+35,7,Horror Movie Night,Jenna & Val,37.0,4,Argentine tango,Safe,Jenna Dewan
+35,7,Horror Movie Night,Connor & Rylee,37.0,4,Contemporary,Safe,Connor Wood
+35,7,Horror Movie Night,Ezra & Daniella,35.0,4,Jazz,Safe,Ezra Frech
+35,7,Horror Movie Night,Jackson & Emma,35.0,4,Contemporary,Eliminated,Jackson Olson
+35,7,Horror Movie Night,Tyler & Sharna,26.0,4,Viennese waltz,Eliminated,Tyler Cameron
+35,7,Horror Movie Night,Amber & Pasha,36.0,4,Argentine tango,Safe,Amber Glenn
+35,7,Horror Movie Night,Maura & Mark,32.0,4,Contemporary,Safe,Maura Higgins
+35,8,Disney Night,Amber & Pasha,34.0,4,Quickstep,Safe,Amber Glenn
+35,8,Disney Night,Maura & Mark,32.0,4,Jive,Safe,Maura Higgins
+35,8,Disney Night,Tatyana & Jan,33.0,4,Contemporary,Safe,Tatyana Ali
+35,8,Disney Night,Harry & Jenna,40.0,4,Jazz,Safe,Harry Shum Jr.
+35,8,Disney Night,Ezra & Daniella,37.0,4,Samba,Safe,Ezra Frech
+35,8,Disney Night,Julia & Ezra,33.0,4,Paso doble,Eliminated,Julia Stiles
+35,8,Disney Night,Jenna & Val,40.0,4,Quickstep,Safe,Jenna Dewan
+35,8,Disney Night,Connor & Rylee,32.0,4,Waltz,Safe,Connor Wood
+35,9,Grammy Night,Ezra & Daniella,27.0,3,Argentine tango,Safe,Ezra Frech
+35,9,Grammy Night,Amber & Pasha,28.0,3,Paso doble,Safe,Amber Glenn
+35,9,Grammy Night,Maura & Mark,27.0,3,Argentine tango,Safe,Maura Higgins
+35,9,Grammy Night,Jenna & Val,28.0,3,Jazz,Eliminated,Jenna Dewan
+35,9,Grammy Night,Tatyana & Jan,27.0,3,Tango,Safe,Tatyana Ali
+35,9,Grammy Night,Connor & Rylee,27.0,3,Argentine tango,Safe,Connor Wood
+35,9,Grammy Night,Harry & Jenna,29.0,3,Salsa,Safe,Harry Shum Jr.
+35,10,Semi-Finals,Connor & Rylee,24.0,3,Jive,Safe,Connor Wood
+35,10,Semi-Finals,Connor & Rylee,24.0,3,Quickstep,Safe,Connor Wood
+35,10,Semi-Finals,Harry & Jenna,30.0,3,Paso doble,Eliminated,Harry Shum Jr.
+35,10,Semi-Finals,Harry & Jenna,30.0,3,Quickstep,Eliminated,Harry Shum Jr.
+35,10,Semi-Finals,Maura & Mark,30.0,3,Samba,Safe,Maura Higgins
+35,10,Semi-Finals,Maura & Mark,29.0,3,Viennese waltz,Safe,Maura Higgins
+35,10,Semi-Finals,Ezra & Daniella,27.0,3,Quickstep,Safe,Ezra Frech
+35,10,Semi-Finals,Ezra & Daniella,30.0,3,Jive,Safe,Ezra Frech
+35,10,Semi-Finals,Amber & Pasha,30.0,3,Salsa,Safe,Amber Glenn
+35,10,Semi-Finals,Amber & Pasha,30.0,3,Viennese waltz,Safe,Amber Glenn
+35,10,Semi-Finals,Tatyana & Jan,27.0,3,Waltz,Safe,Tatyana Ali
+35,10,Semi-Finals,Tatyana & Jan,28.0,3,Cha-cha-cha,Safe,Tatyana Ali
+35,11,Finale,Amber & Pasha,,3,,,Amber Glenn
+35,11,Finale,Amber & Pasha,,3,,,Amber Glenn
+35,11,Finale,Amber & Pasha,,3,,,Amber Glenn
+35,11,Finale,Connor & Rylee,,3,,,Connor Wood
+35,11,Finale,Connor & Rylee,,3,,,Connor Wood
+35,11,Finale,Connor & Rylee,,3,,,Connor Wood
+35,11,Finale,Ezra & Daniella,,3,,,Ezra Frech
+35,11,Finale,Ezra & Daniella,,3,,,Ezra Frech
+35,11,Finale,Ezra & Daniella,,3,,,Ezra Frech
+35,11,Finale,Maura & Mark,,3,,,Maura Higgins
+35,11,Finale,Maura & Mark,,3,,,Maura Higgins
+35,11,Finale,Maura & Mark,,3,,,Maura Higgins
+35,11,Finale,Tatyana & Jan,,3,,,Tatyana Ali
+35,11,Finale,Tatyana & Jan,,3,,,Tatyana Ali
+35,11,Finale,Tatyana & Jan,,3,,,Tatyana Ali

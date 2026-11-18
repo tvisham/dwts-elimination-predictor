@@ -1,17 +1,23 @@
 window.DWTS = {
  "season": 35,
- "generated": "2026-10-14",
- "week": 6,
- "theme": "Dedication Night",
+ "generated": "2026-11-17",
+ "week": 11,
+ "theme": "Finale",
  "week_scored": false,
  "scores_in": false,
+ "finale_mode": true,
  "themes": {
   "1": "Premiere",
   "2": "Viral Hits Night",
   "3": "Yacht Rock Night",
   "4": "Mariah Carey Night",
   "5": "Super Bowl Night",
-  "6": "Dedication Night"
+  "6": "Dedication Night",
+  "7": "Horror Movie Night",
+  "8": "Disney Night",
+  "9": "Grammy Night",
+  "10": "Semi-Finals",
+  "11": "Finale"
  },
  "schedule": {
   "total_weeks": 11,
@@ -43,26 +49,18 @@ window.DWTS = {
      "dance": "Salsa"
     }
    ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 56341.0
-    }
-   ],
+   "instagram": [],
    "social": {
     "youtube_views": 253595.0,
     "youtube_videos": 1.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": null,
-   "social_z": null,
    "fan_rating": null,
-   "form_z": -1.356747703594957,
    "pro_strength": 0.5,
    "p_week": {},
    "p_final": 0.0,
+   "p_place": {},
    "p_win": 0.0
   },
   {
@@ -89,26 +87,18 @@ window.DWTS = {
      "dance": "Jive"
     }
    ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 6966.0
-    }
-   ],
+   "instagram": [],
    "social": {
     "youtube_views": 206227.0,
     "youtube_videos": 1.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": null,
-   "social_z": null,
    "fan_rating": null,
-   "form_z": -0.7182781960208596,
    "pro_strength": 0.5,
    "p_week": {},
    "p_final": 0.0,
+   "p_place": {},
    "p_win": 0.0
   },
   {
@@ -145,30 +135,18 @@ window.DWTS = {
      "dance": "Salsa"
     }
    ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 15215.0
-    },
-    {
-     "week": 2,
-     "views": 72773.0
-    }
-   ],
+   "instagram": [],
    "social": {
     "youtube_views": 419569.0,
     "youtube_videos": 2.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": null,
-   "social_z": null,
    "fan_rating": null,
-   "form_z": -0.9343315352232967,
    "pro_strength": 0.5604649979649979,
    "p_week": {},
    "p_final": 0.0,
+   "p_place": {},
    "p_win": 0.0
   },
   {
@@ -215,34 +193,18 @@ window.DWTS = {
      "dance": "Foxtrot"
     }
    ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 17614.0
-    },
-    {
-     "week": 2,
-     "views": 150064.0
-    },
-    {
-     "week": 3,
-     "views": 70070.0
-    }
-   ],
+   "instagram": [],
    "social": {
     "youtube_views": 247332.0,
     "youtube_videos": 2.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": null,
-   "social_z": null,
    "fan_rating": null,
-   "form_z": -0.514743500733689,
    "pro_strength": 0.32944139194139194,
    "p_week": {},
    "p_final": 0.0,
+   "p_place": {},
    "p_win": 0.0
   },
   {
@@ -287,38 +249,18 @@ window.DWTS = {
      "dance": "Jazz"
     }
    ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 11828.0
-    },
-    {
-     "week": 2,
-     "views": 69095.0
-    },
-    {
-     "week": 3,
-     "views": 43129.0
-    },
-    {
-     "week": 4,
-     "views": 20670.0
-    }
-   ],
+   "instagram": [],
    "social": {
     "youtube_views": 512241.0,
     "youtube_videos": 4.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": null,
-   "social_z": null,
    "fan_rating": null,
-   "form_z": -0.23194990992291334,
    "pro_strength": 0.383984533984534,
    "p_week": {},
    "p_final": 0.0,
+   "p_place": {},
    "p_win": 0.0
   },
   {
@@ -377,42 +319,464 @@ window.DWTS = {
      "dance": "Salsa"
     }
    ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 12519.0
-    },
-    {
-     "week": 2,
-     "views": 59313.99999999999
-    },
-    {
-     "week": 3,
-     "views": 52439.0
-    },
-    {
-     "week": 4,
-     "views": 47197.0
-    },
-    {
-     "week": 5,
-     "views": 37736.0
-    }
-   ],
+   "instagram": [],
    "social": {
     "youtube_views": 2366043.0,
     "youtube_videos": 4.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": null,
-   "social_z": null,
    "fan_rating": null,
-   "form_z": -2.1076552358625245,
    "pro_strength": 0.5880740174857821,
    "p_week": {},
    "p_final": 0.0,
+   "p_place": {},
+   "p_win": 0.0
+  },
+  {
+   "celebrity": "Tyler Cameron",
+   "pro": "Sharna Burgess",
+   "couple": "Tyler & Sharna",
+   "notability": "The Bachelorette runner-up",
+   "category": "reality",
+   "status": "Eliminated 7th & 8th on October 27, 2026",
+   "place": 10,
+   "alive": false,
+   "photo": {
+    "file": "img/tyler-cameron.jpg",
+    "article": "https://en.wikipedia.org/wiki/Tyler_Cameron",
+    "image": "https://commons.wikimedia.org/wiki/File:Tyler_Cameron_16.5.24_on_The_Jennifer_Hudson_Show_WBNX_TV_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "pro_photo": {
+    "file": "img/sharna-burgess.jpg",
+    "article": "https://en.wikipedia.org/wiki/Sharna_Burgess",
+    "image": "https://commons.wikimedia.org/wiki/File:Sharna_Burgess_2012_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "couple_photo": {
+    "file": "img/custom/tyler-cameron.png",
+    "article": "",
+    "image": ""
+   },
+   "scores": [
+    {
+     "week": 1,
+     "score": 17.0,
+     "max": 30,
+     "dance": "Tango"
+    },
+    {
+     "week": 2,
+     "score": 16.0,
+     "max": 30,
+     "dance": "Salsa"
+    },
+    {
+     "week": 3,
+     "score": 17.0,
+     "max": 30,
+     "dance": "Jive"
+    },
+    {
+     "week": 4,
+     "score": 21.0,
+     "max": 30,
+     "dance": "Foxtrot"
+    },
+    {
+     "week": 5,
+     "score": 30.0,
+     "max": 40,
+     "dance": "Jazz"
+    },
+    {
+     "week": 6,
+     "score": 32.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 7,
+     "score": 26.0,
+     "max": 40,
+     "dance": "Viennese waltz"
+    }
+   ],
+   "instagram": [],
+   "social": {
+    "youtube_views": 610695.0,
+    "youtube_videos": 5.0,
+    "tiktok": null
+   },
+   "yt_per_day": null,
+   "fan_rating": null,
+   "pro_strength": 0.5205853174603174,
+   "p_week": {},
+   "p_final": 0.0,
+   "p_place": {},
+   "p_win": 0.0
+  },
+  {
+   "celebrity": "Jackson Olson",
+   "pro": "Emma Slater",
+   "couple": "Jackson & Emma",
+   "notability": "Savannah Bananas second baseman",
+   "category": "athlete",
+   "status": "Eliminated 7th & 8th on October 27, 2026",
+   "place": 10,
+   "alive": false,
+   "photo": {
+    "file": "img/jackson-olson.jpg",
+    "article": "https://en.wikipedia.org/wiki/Jackson_Olson",
+    "image": "https://commons.wikimedia.org/wiki/File:Jackson_Olson_in_2025_%28cropped-J1%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "pro_photo": {
+    "file": "img/emma-slater.jpg",
+    "article": "https://en.wikipedia.org/wiki/Emma_Slater",
+    "image": "https://commons.wikimedia.org/wiki/File:Emma_Slater_Better_Together_2026_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "couple_photo": {
+    "file": "img/custom/jackson-olson.png",
+    "article": "",
+    "image": ""
+   },
+   "scores": [
+    {
+     "week": 1,
+     "score": 15.0,
+     "max": 30,
+     "dance": "Cha-cha-cha"
+    },
+    {
+     "week": 2,
+     "score": 18.0,
+     "max": 30,
+     "dance": "Foxtrot"
+    },
+    {
+     "week": 3,
+     "score": 18.0,
+     "max": 30,
+     "dance": "Paso doble"
+    },
+    {
+     "week": 4,
+     "score": 21.0,
+     "max": 30,
+     "dance": "Waltz"
+    },
+    {
+     "week": 5,
+     "score": 31.0,
+     "max": 40,
+     "dance": "Salsa"
+    },
+    {
+     "week": 6,
+     "score": 32.0,
+     "max": 40,
+     "dance": "Quickstep"
+    },
+    {
+     "week": 7,
+     "score": 35.0,
+     "max": 40,
+     "dance": "Contemporary"
+    }
+   ],
+   "instagram": [],
+   "social": {
+    "youtube_views": 675462.0,
+    "youtube_videos": 5.0,
+    "tiktok": null
+   },
+   "yt_per_day": null,
+   "fan_rating": null,
+   "pro_strength": 0.4231795981795982,
+   "p_week": {},
+   "p_final": 0.0,
+   "p_place": {},
+   "p_win": 0.0
+  },
+  {
+   "celebrity": "Julia Stiles",
+   "pro": "Ezra Sosa",
+   "couple": "Julia & Ezra",
+   "notability": "Actress & director",
+   "category": "actor/tv",
+   "status": "Eliminated 9th on November 2, 2026",
+   "place": 8,
+   "alive": false,
+   "photo": {
+    "file": "img/julia-stiles.jpg",
+    "article": "https://en.wikipedia.org/wiki/Julia_Stiles",
+    "image": "https://commons.wikimedia.org/wiki/File:Julia_Stiles_by_David_Shankbone_cropped.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/julia-stiles.png",
+    "article": "",
+    "image": ""
+   },
+   "scores": [
+    {
+     "week": 1,
+     "score": 18.0,
+     "max": 30,
+     "dance": "Quickstep"
+    },
+    {
+     "week": 2,
+     "score": 16.0,
+     "max": 30,
+     "dance": "Tango"
+    },
+    {
+     "week": 3,
+     "score": 19.0,
+     "max": 30,
+     "dance": "Salsa"
+    },
+    {
+     "week": 4,
+     "score": 21.0,
+     "max": 30,
+     "dance": "Viennese waltz"
+    },
+    {
+     "week": 5,
+     "score": 33.0,
+     "max": 40,
+     "dance": "Jazz"
+    },
+    {
+     "week": 6,
+     "score": 36.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 7,
+     "score": 26.0,
+     "max": 40,
+     "dance": "Argentine tango"
+    },
+    {
+     "week": 8,
+     "score": 33.0,
+     "max": 40,
+     "dance": "Paso doble"
+    }
+   ],
+   "instagram": [],
+   "social": {
+    "youtube_views": 2302969.0,
+    "youtube_videos": 5.0,
+    "tiktok": null
+   },
+   "yt_per_day": null,
+   "fan_rating": null,
+   "pro_strength": 0.46153846153846156,
+   "p_week": {},
+   "p_final": 0.0,
+   "p_place": {},
+   "p_win": 0.0
+  },
+  {
+   "celebrity": "Jenna Dewan",
+   "pro": "Val Chmerkovskiy Alan Bersten ( Week 6 )",
+   "couple": "Jenna & Val",
+   "notability": "Actress & dancer",
+   "category": "actor/tv",
+   "status": "Eliminated 10th on November 10, 2026",
+   "place": 7,
+   "alive": false,
+   "photo": {
+    "file": "img/jenna-dewan.jpg",
+    "article": "https://en.wikipedia.org/wiki/Jenna_Dewan",
+    "image": "https://commons.wikimedia.org/wiki/File:Jenna_Dewan_at_San_Diego_Comic_Con_2026-2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/jenna-dewan.png",
+    "article": "",
+    "image": ""
+   },
+   "scores": [
+    {
+     "week": 1,
+     "score": 19.0,
+     "max": 30,
+     "dance": "Tango"
+    },
+    {
+     "week": 2,
+     "score": 21.0,
+     "max": 30,
+     "dance": "Jive"
+    },
+    {
+     "week": 3,
+     "score": 21.0,
+     "max": 30,
+     "dance": "Samba"
+    },
+    {
+     "week": 4,
+     "score": 24.0,
+     "max": 30,
+     "dance": "Rumba"
+    },
+    {
+     "week": 5,
+     "score": 36.0,
+     "max": 40,
+     "dance": "Paso doble"
+    },
+    {
+     "week": 6,
+     "score": 37.0,
+     "max": 40,
+     "dance": "Viennese waltz"
+    },
+    {
+     "week": 7,
+     "score": 37.0,
+     "max": 40,
+     "dance": "Argentine tango"
+    },
+    {
+     "week": 8,
+     "score": 40.0,
+     "max": 40,
+     "dance": "Quickstep"
+    },
+    {
+     "week": 9,
+     "score": 28.0,
+     "max": 30,
+     "dance": "Jazz"
+    }
+   ],
+   "instagram": [],
+   "social": {
+    "youtube_views": 1355166.0,
+    "youtube_videos": 5.0,
+    "tiktok": null
+   },
+   "yt_per_day": null,
+   "fan_rating": null,
+   "pro_strength": 0.7121794871794872,
+   "p_week": {},
+   "p_final": 0.0,
+   "p_place": {},
+   "p_win": 0.0
+  },
+  {
+   "celebrity": "Harry Shum Jr.",
+   "pro": "Jenna Johnson",
+   "couple": "Harry & Jenna",
+   "notability": "Actor & dancer",
+   "category": "actor/tv",
+   "status": "Eliminated 11th on November 17, 2026",
+   "place": 6,
+   "alive": false,
+   "photo": {
+    "file": "img/harry-shum-jr.jpg",
+    "article": "https://en.wikipedia.org/wiki/Harry_Shum_Jr.",
+    "image": "https://commons.wikimedia.org/wiki/File:Harry_Shum_Jr._podczas_San_Diego_ComicCon_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+   },
+   "pro_photo": null,
+   "couple_photo": {
+    "file": "img/custom/harry-shum-jr.png",
+    "article": "",
+    "image": ""
+   },
+   "scores": [
+    {
+     "week": 1,
+     "score": 21.0,
+     "max": 30,
+     "dance": "Cha-cha-cha"
+    },
+    {
+     "week": 2,
+     "score": 18.0,
+     "max": 30,
+     "dance": "Viennese waltz"
+    },
+    {
+     "week": 3,
+     "score": 24.0,
+     "max": 30,
+     "dance": "Jive"
+    },
+    {
+     "week": 4,
+     "score": 24.0,
+     "max": 30,
+     "dance": "Tango"
+    },
+    {
+     "week": 5,
+     "score": 33.0,
+     "max": 40,
+     "dance": "Samba"
+    },
+    {
+     "week": 6,
+     "score": 36.0,
+     "max": 40,
+     "dance": "Foxtrot"
+    },
+    {
+     "week": 7,
+     "score": 40.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 8,
+     "score": 40.0,
+     "max": 40,
+     "dance": "Jazz"
+    },
+    {
+     "week": 9,
+     "score": 29.0,
+     "max": 30,
+     "dance": "Salsa"
+    },
+    {
+     "week": 10,
+     "score": 30.0,
+     "max": 30,
+     "dance": "Paso doble"
+    },
+    {
+     "week": 10,
+     "score": 30.0,
+     "max": 30,
+     "dance": "Quickstep"
+    }
+   ],
+   "instagram": [
+    {
+     "week": 10,
+     "likes": 55707.0,
+     "posts": 1
+    }
+   ],
+   "social": {
+    "youtube_views": 1904166.0,
+    "youtube_videos": 5.0,
+    "tiktok": null
+   },
+   "yt_per_day": null,
+   "fan_rating": null,
+   "pro_strength": 0.5333681470045106,
+   "p_week": {},
+   "p_final": 0.0,
+   "p_place": {},
    "p_win": 0.0
   },
   {
@@ -421,7 +785,7 @@ window.DWTS = {
    "couple": "Tatyana & Jan",
    "notability": "Television actress & singer",
    "category": "actor/tv",
-   "status": "Participating",
+   "status": "Finalist",
    "place": null,
    "alive": true,
    "photo": {
@@ -472,274 +836,84 @@ window.DWTS = {
     },
     {
      "week": 6,
+     "score": 32.0,
+     "max": 40,
+     "dance": "Viennese waltz"
+    },
+    {
+     "week": 7,
+     "score": 28.0,
+     "max": 40,
+     "dance": "Paso doble"
+    },
+    {
+     "week": 8,
+     "score": 33.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 9,
+     "score": 27.0,
+     "max": 30,
+     "dance": "Tango"
+    },
+    {
+     "week": 10,
+     "score": 27.0,
+     "max": 30,
+     "dance": "Waltz"
+    },
+    {
+     "week": 10,
+     "score": 28.0,
+     "max": 30,
+     "dance": "Cha-cha-cha"
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
      "score": null,
      "max": 30,
      "dance": null
     }
    ],
-   "wiki_views": [
+   "instagram": [
     {
-     "week": 1,
-     "views": 20270.0
-    },
-    {
-     "week": 2,
-     "views": 95198.0
-    },
-    {
-     "week": 3,
-     "views": 65835.0
-    },
-    {
-     "week": 4,
-     "views": 54279.0
-    },
-    {
-     "week": 5,
-     "views": 54841.0
-    },
-    {
-     "week": 6,
-     "views": 20916.0
+     "week": 10,
+     "likes": 41461.0,
+     "posts": 2
     }
    ],
    "social": {
     "youtube_views": 707661.0,
     "youtube_videos": 5.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": 0.11052436801664478,
-   "social_z": -0.9065462894015999,
-   "fan_rating": 0.26677904396031116,
-   "form_z": -0.30796257608714284,
+   "fan_rating": 0.8356299176121411,
    "pro_strength": 0.4615384615384615,
-   "p_week": {
-    "6": 0.13925,
-    "7": 0.1298,
-    "8": 0.13275,
-    "9": 0.15515,
-    "10": 0.17355
+   "p_week": {},
+   "p_final": 1.0,
+   "p_place": {
+    "1": 0.0394,
+    "2": 0.12315,
+    "3": 0.24765,
+    "4": 0.28955,
+    "5": 0.30025
    },
-   "p_final": 0.2695,
-   "p_win": 0.0202
-  },
-  {
-   "celebrity": "Tyler Cameron",
-   "pro": "Sharna Burgess",
-   "couple": "Tyler & Sharna",
-   "notability": "The Bachelorette runner-up",
-   "category": "reality",
-   "status": "Participating",
-   "place": null,
-   "alive": true,
-   "photo": {
-    "file": "img/tyler-cameron.jpg",
-    "article": "https://en.wikipedia.org/wiki/Tyler_Cameron",
-    "image": "https://commons.wikimedia.org/wiki/File:Tyler_Cameron_16.5.24_on_The_Jennifer_Hudson_Show_WBNX_TV_55.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-   },
-   "pro_photo": {
-    "file": "img/sharna-burgess.jpg",
-    "article": "https://en.wikipedia.org/wiki/Sharna_Burgess",
-    "image": "https://commons.wikimedia.org/wiki/File:Sharna_Burgess_2012_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-   },
-   "couple_photo": {
-    "file": "img/custom/tyler-cameron.png",
-    "article": "",
-    "image": ""
-   },
-   "scores": [
-    {
-     "week": 1,
-     "score": 17.0,
-     "max": 30,
-     "dance": "Tango"
-    },
-    {
-     "week": 2,
-     "score": 16.0,
-     "max": 30,
-     "dance": "Salsa"
-    },
-    {
-     "week": 3,
-     "score": 17.0,
-     "max": 30,
-     "dance": "Jive"
-    },
-    {
-     "week": 4,
-     "score": 21.0,
-     "max": 30,
-     "dance": "Foxtrot"
-    },
-    {
-     "week": 5,
-     "score": 30.0,
-     "max": 40,
-     "dance": "Jazz"
-    },
-    {
-     "week": 6,
-     "score": null,
-     "max": 30,
-     "dance": null
-    }
-   ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 10365.0
-    },
-    {
-     "week": 2,
-     "views": 75681.0
-    },
-    {
-     "week": 3,
-     "views": 61962.0
-    },
-    {
-     "week": 4,
-     "views": 54452.0
-    },
-    {
-     "week": 5,
-     "views": 57475.0
-    },
-    {
-     "week": 6,
-     "views": 16093.0
-    }
-   ],
-   "social": {
-    "youtube_views": 610695.0,
-    "youtube_videos": 5.0,
-    "instagram": null,
-    "tiktok": null
-   },
-   "yt_per_day": null,
-   "wiki_z": -0.43834680495046224,
-   "social_z": -1.1036928404147588,
-   "fan_rating": 0.2755088600782525,
-   "form_z": -0.3269980417324164,
-   "pro_strength": 0.5205853174603174,
-   "p_week": {
-    "6": 0.1896,
-    "7": 0.191,
-    "8": 0.20835,
-    "9": 0.17835,
-    "10": 0.1282
-   },
-   "p_final": 0.1045,
-   "p_win": 0.0051
-  },
-  {
-   "celebrity": "Jenna Dewan",
-   "pro": "Val Chmerkovskiy",
-   "couple": "Jenna & Val",
-   "notability": "Actress & dancer",
-   "category": "actor/tv",
-   "status": "Participating",
-   "place": null,
-   "alive": true,
-   "photo": {
-    "file": "img/jenna-dewan.jpg",
-    "article": "https://en.wikipedia.org/wiki/Jenna_Dewan",
-    "image": "https://commons.wikimedia.org/wiki/File:Jenna_Dewan_at_San_Diego_Comic_Con_2026-2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-   },
-   "pro_photo": null,
-   "couple_photo": {
-    "file": "img/custom/jenna-dewan.png",
-    "article": "",
-    "image": ""
-   },
-   "scores": [
-    {
-     "week": 1,
-     "score": 19.0,
-     "max": 30,
-     "dance": "Tango"
-    },
-    {
-     "week": 2,
-     "score": 21.0,
-     "max": 30,
-     "dance": "Jive"
-    },
-    {
-     "week": 3,
-     "score": 21.0,
-     "max": 30,
-     "dance": "Samba"
-    },
-    {
-     "week": 4,
-     "score": 24.0,
-     "max": 30,
-     "dance": "Rumba"
-    },
-    {
-     "week": 5,
-     "score": 36.0,
-     "max": 40,
-     "dance": "Paso doble"
-    },
-    {
-     "week": 6,
-     "score": null,
-     "max": 30,
-     "dance": null
-    }
-   ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 44853.0
-    },
-    {
-     "week": 2,
-     "views": 197577.0
-    },
-    {
-     "week": 3,
-     "views": 107801.0
-    },
-    {
-     "week": 4,
-     "views": 111666.0
-    },
-    {
-     "week": 5,
-     "views": 87728.0
-    },
-    {
-     "week": 6,
-     "views": 48881.0
-    }
-   ],
-   "social": {
-    "youtube_views": 1355166.0,
-    "youtube_videos": 5.0,
-    "instagram": null,
-    "tiktok": null
-   },
-   "yt_per_day": null,
-   "wiki_z": 1.8880129444874099,
-   "social_z": 0.4786050208823163,
-   "fan_rating": 0.0813388023286581,
-   "form_z": 0.9407733839937741,
-   "pro_strength": 0.7121794871794872,
-   "p_week": {
-    "6": 0.0446,
-    "7": 0.04235,
-    "8": 0.04445,
-    "9": 0.04785,
-    "10": 0.0621
-   },
-   "p_final": 0.75865,
-   "p_win": 0.2811
+   "p_win": 0.0394
   },
   {
    "celebrity": "Ezra Frech",
@@ -747,7 +921,7 @@ window.DWTS = {
    "couple": "Ezra & Daniella",
    "notability": "Paralympic track & field athlete",
    "category": "athlete",
-   "status": "Participating",
+   "status": "Finalist",
    "place": null,
    "alive": true,
    "photo": {
@@ -798,58 +972,84 @@ window.DWTS = {
     },
     {
      "week": 6,
+     "score": 37.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 7,
+     "score": 35.0,
+     "max": 40,
+     "dance": "Jazz"
+    },
+    {
+     "week": 8,
+     "score": 37.0,
+     "max": 40,
+     "dance": "Samba"
+    },
+    {
+     "week": 9,
+     "score": 27.0,
+     "max": 30,
+     "dance": "Argentine tango"
+    },
+    {
+     "week": 10,
+     "score": 27.0,
+     "max": 30,
+     "dance": "Quickstep"
+    },
+    {
+     "week": 10,
+     "score": 30.0,
+     "max": 30,
+     "dance": "Jive"
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
      "score": null,
      "max": 30,
      "dance": null
     }
    ],
-   "wiki_views": [
+   "instagram": [
     {
-     "week": 1,
-     "views": 17851.0
-    },
-    {
-     "week": 2,
-     "views": 137868.0
-    },
-    {
-     "week": 3,
-     "views": 169022.0
-    },
-    {
-     "week": 4,
-     "views": 72161.0
-    },
-    {
-     "week": 5,
-     "views": 63071.0
-    },
-    {
-     "week": 6,
-     "views": 20153.0
+     "week": 10,
+     "likes": 68263.0,
+     "posts": 1
     }
    ],
    "social": {
     "youtube_views": 1886601.0,
     "youtube_videos": 5.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": 0.03271235985680699,
-   "social_z": 0.5894909673703705,
-   "fan_rating": 0.0788865323162941,
-   "form_z": 1.0046203347511837,
+   "fan_rating": 0.4238625109918319,
    "pro_strength": 0.6749313186813187,
-   "p_week": {
-    "6": 0.04005,
-    "7": 0.03575,
-    "8": 0.03455,
-    "9": 0.0396,
-    "10": 0.0529
+   "p_week": {},
+   "p_final": 1.0,
+   "p_place": {
+    "1": 0.4667,
+    "2": 0.29165,
+    "3": 0.1196,
+    "4": 0.0747,
+    "5": 0.04735
    },
-   "p_final": 0.79715,
-   "p_win": 0.1635
+   "p_win": 0.4667
   },
   {
    "celebrity": "Amber Glenn",
@@ -857,7 +1057,7 @@ window.DWTS = {
    "couple": "Amber & Pasha",
    "notability": "Olympic figure skater",
    "category": "athlete",
-   "status": "Participating",
+   "status": "Finalist",
    "place": null,
    "alive": true,
    "photo": {
@@ -908,58 +1108,84 @@ window.DWTS = {
     },
     {
      "week": 6,
+     "score": 38.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 7,
+     "score": 36.0,
+     "max": 40,
+     "dance": "Argentine tango"
+    },
+    {
+     "week": 8,
+     "score": 34.0,
+     "max": 40,
+     "dance": "Quickstep"
+    },
+    {
+     "week": 9,
+     "score": 28.0,
+     "max": 30,
+     "dance": "Paso doble"
+    },
+    {
+     "week": 10,
+     "score": 30.0,
+     "max": 30,
+     "dance": "Salsa"
+    },
+    {
+     "week": 10,
+     "score": 30.0,
+     "max": 30,
+     "dance": "Viennese waltz"
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
      "score": null,
      "max": 30,
      "dance": null
     }
    ],
-   "wiki_views": [
+   "instagram": [
     {
-     "week": 1,
-     "views": 9247.0
-    },
-    {
-     "week": 2,
-     "views": 58591.0
-    },
-    {
-     "week": 3,
-     "views": 85772.0
-    },
-    {
-     "week": 4,
-     "views": 26856.0
-    },
-    {
-     "week": 5,
-     "views": 31401.0
-    },
-    {
-     "week": 6,
-     "views": 10388.0
+     "week": 10,
+     "likes": 40291.5,
+     "posts": 2
     }
    ],
    "social": {
     "youtube_views": 705191.0,
     "youtube_videos": 4.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": -1.3548899841331659,
-   "social_z": -0.29733659245739574,
-   "fan_rating": 0.08484813352822769,
-   "form_z": 0.9504063123103119,
+   "fan_rating": 0.21898147488126898,
    "pro_strength": 0.3200947200947201,
-   "p_week": {
-    "6": 0.03255,
-    "7": 0.0339,
-    "8": 0.0322,
-    "9": 0.03385,
-    "10": 0.04435
+   "p_week": {},
+   "p_final": 1.0,
+   "p_place": {
+    "1": 0.42295,
+    "2": 0.3228,
+    "3": 0.12645,
+    "4": 0.07475,
+    "5": 0.05305
    },
-   "p_final": 0.82315,
-   "p_win": 0.0825
+   "p_win": 0.42295
   },
   {
    "celebrity": "Maura Higgins",
@@ -967,7 +1193,7 @@ window.DWTS = {
    "couple": "Maura & Mark",
    "notability": "Television personality & model",
    "category": "actor/tv",
-   "status": "Participating",
+   "status": "Finalist",
    "place": null,
    "alive": true,
    "photo": {
@@ -1018,380 +1244,84 @@ window.DWTS = {
     },
     {
      "week": 6,
+     "score": 35.0,
+     "max": 40,
+     "dance": "Paso doble"
+    },
+    {
+     "week": 7,
+     "score": 32.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 8,
+     "score": 32.0,
+     "max": 40,
+     "dance": "Jive"
+    },
+    {
+     "week": 9,
+     "score": 27.0,
+     "max": 30,
+     "dance": "Argentine tango"
+    },
+    {
+     "week": 10,
+     "score": 30.0,
+     "max": 30,
+     "dance": "Samba"
+    },
+    {
+     "week": 10,
+     "score": 29.0,
+     "max": 30,
+     "dance": "Viennese waltz"
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
      "score": null,
      "max": 30,
      "dance": null
     }
    ],
-   "wiki_views": [
+   "instagram": [
     {
-     "week": 1,
-     "views": 14569.0
-    },
-    {
-     "week": 2,
-     "views": 137762.0
-    },
-    {
-     "week": 3,
-     "views": 65614.0
-    },
-    {
-     "week": 4,
-     "views": 44374.0
-    },
-    {
-     "week": 5,
-     "views": 41400.0
-    },
-    {
-     "week": 6,
-     "views": 16688.0
+     "week": 10,
+     "likes": 34949.0,
+     "posts": 1
     }
    ],
    "social": {
     "youtube_views": 1336707.0,
     "youtube_videos": 5.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": -0.36232759372849827,
-   "social_z": 0.2117840354758383,
-   "fan_rating": 0.09019201766021473,
-   "form_z": 0.9286573547657344,
+   "fan_rating": 0.5764395215195594,
    "pro_strength": 0.6131853653592784,
-   "p_week": {
-    "6": 0.04315,
-    "7": 0.04085,
-    "8": 0.03905,
-    "9": 0.04445,
-    "10": 0.0556
+   "p_week": {},
+   "p_final": 1.0,
+   "p_place": {
+    "1": 0.02075,
+    "2": 0.0887,
+    "3": 0.1973,
+    "4": 0.2976,
+    "5": 0.39565
    },
-   "p_final": 0.7769,
-   "p_win": 0.11655
-  },
-  {
-   "celebrity": "Jackson Olson",
-   "pro": "Emma Slater",
-   "couple": "Jackson & Emma",
-   "notability": "Savannah Bananas second baseman",
-   "category": "athlete",
-   "status": "Participating",
-   "place": null,
-   "alive": true,
-   "photo": {
-    "file": "img/jackson-olson.jpg",
-    "article": "https://en.wikipedia.org/wiki/Jackson_Olson",
-    "image": "https://commons.wikimedia.org/wiki/File:Jackson_Olson_in_2025_%28cropped-J1%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-   },
-   "pro_photo": {
-    "file": "img/emma-slater.jpg",
-    "article": "https://en.wikipedia.org/wiki/Emma_Slater",
-    "image": "https://commons.wikimedia.org/wiki/File:Emma_Slater_Better_Together_2026_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-   },
-   "couple_photo": {
-    "file": "img/custom/jackson-olson.png",
-    "article": "",
-    "image": ""
-   },
-   "scores": [
-    {
-     "week": 1,
-     "score": 15.0,
-     "max": 30,
-     "dance": "Cha-cha-cha"
-    },
-    {
-     "week": 2,
-     "score": 18.0,
-     "max": 30,
-     "dance": "Foxtrot"
-    },
-    {
-     "week": 3,
-     "score": 18.0,
-     "max": 30,
-     "dance": "Paso doble"
-    },
-    {
-     "week": 4,
-     "score": 21.0,
-     "max": 30,
-     "dance": "Waltz"
-    },
-    {
-     "week": 5,
-     "score": 31.0,
-     "max": 40,
-     "dance": "Salsa"
-    },
-    {
-     "week": 6,
-     "score": null,
-     "max": 30,
-     "dance": null
-    }
-   ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 13226.0
-    },
-    {
-     "week": 2,
-     "views": 46484.0
-    },
-    {
-     "week": 3,
-     "views": 26935.0
-    },
-    {
-     "week": 4,
-     "views": 27044.0
-    },
-    {
-     "week": 5,
-     "views": 42846.0
-    },
-    {
-     "week": 6,
-     "views": 12292.0
-    }
-   ],
-   "social": {
-    "youtube_views": 675462.0,
-    "youtube_videos": 5.0,
-    "instagram": null,
-    "tiktok": null
-   },
-   "yt_per_day": null,
-   "wiki_z": -1.0025059691226244,
-   "social_z": -1.7536352011767429,
-   "fan_rating": 0.22587760791551084,
-   "form_z": -0.18990160288886082,
-   "pro_strength": 0.4231795981795982,
-   "p_week": {
-    "6": 0.1322,
-    "7": 0.1333,
-    "8": 0.14065,
-    "9": 0.1653,
-    "10": 0.17485
-   },
-   "p_final": 0.2537,
-   "p_win": 0.0098
-  },
-  {
-   "celebrity": "Harry Shum Jr.",
-   "pro": "Jenna Johnson",
-   "couple": "Harry & Jenna",
-   "notability": "Actor & dancer",
-   "category": "actor/tv",
-   "status": "Participating",
-   "place": null,
-   "alive": true,
-   "photo": {
-    "file": "img/harry-shum-jr.jpg",
-    "article": "https://en.wikipedia.org/wiki/Harry_Shum_Jr.",
-    "image": "https://commons.wikimedia.org/wiki/File:Harry_Shum_Jr._podczas_San_Diego_ComicCon_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-   },
-   "pro_photo": null,
-   "couple_photo": {
-    "file": "img/custom/harry-shum-jr.png",
-    "article": "",
-    "image": ""
-   },
-   "scores": [
-    {
-     "week": 1,
-     "score": 21.0,
-     "max": 30,
-     "dance": "Cha-cha-cha"
-    },
-    {
-     "week": 2,
-     "score": 18.0,
-     "max": 30,
-     "dance": "Viennese waltz"
-    },
-    {
-     "week": 3,
-     "score": 24.0,
-     "max": 30,
-     "dance": "Jive"
-    },
-    {
-     "week": 4,
-     "score": 24.0,
-     "max": 30,
-     "dance": "Tango"
-    },
-    {
-     "week": 5,
-     "score": 33.0,
-     "max": 40,
-     "dance": "Samba"
-    },
-    {
-     "week": 6,
-     "score": null,
-     "max": 30,
-     "dance": null
-    }
-   ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 25670.0
-    },
-    {
-     "week": 2,
-     "views": 192246.0
-    },
-    {
-     "week": 3,
-     "views": 79595.0
-    },
-    {
-     "week": 4,
-     "views": 55367.0
-    },
-    {
-     "week": 5,
-     "views": 48855.0
-    },
-    {
-     "week": 6,
-     "views": 19467.0
-    }
-   ],
-   "social": {
-    "youtube_views": 1904166.0,
-    "youtube_videos": 5.0,
-    "instagram": null,
-    "tiktok": null
-   },
-   "yt_per_day": null,
-   "wiki_z": -0.03980442084188155,
-   "social_z": 1.1587357405400844,
-   "fan_rating": 0.09177157385958776,
-   "form_z": 0.9501887261487928,
-   "pro_strength": 0.5333681470045106,
-   "p_week": {
-    "6": 0.0367,
-    "7": 0.03265,
-    "8": 0.03265,
-    "9": 0.0386,
-    "10": 0.053
-   },
-   "p_final": 0.8064,
-   "p_win": 0.20665
-  },
-  {
-   "celebrity": "Julia Stiles",
-   "pro": "Ezra Sosa",
-   "couple": "Julia & Ezra",
-   "notability": "Actress & director",
-   "category": "actor/tv",
-   "status": "Participating",
-   "place": null,
-   "alive": true,
-   "photo": {
-    "file": "img/julia-stiles.jpg",
-    "article": "https://en.wikipedia.org/wiki/Julia_Stiles",
-    "image": "https://commons.wikimedia.org/wiki/File:Julia_Stiles_by_David_Shankbone_cropped.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-   },
-   "pro_photo": null,
-   "couple_photo": {
-    "file": "img/custom/julia-stiles.png",
-    "article": "",
-    "image": ""
-   },
-   "scores": [
-    {
-     "week": 1,
-     "score": 18.0,
-     "max": 30,
-     "dance": "Quickstep"
-    },
-    {
-     "week": 2,
-     "score": 16.0,
-     "max": 30,
-     "dance": "Tango"
-    },
-    {
-     "week": 3,
-     "score": 19.0,
-     "max": 30,
-     "dance": "Salsa"
-    },
-    {
-     "week": 4,
-     "score": 21.0,
-     "max": 30,
-     "dance": "Viennese waltz"
-    },
-    {
-     "week": 5,
-     "score": 33.0,
-     "max": 40,
-     "dance": "Jazz"
-    },
-    {
-     "week": 6,
-     "score": null,
-     "max": 30,
-     "dance": null
-    }
-   ],
-   "wiki_views": [
-    {
-     "week": 1,
-     "views": 82087.0
-    },
-    {
-     "week": 2,
-     "views": 289321.0
-    },
-    {
-     "week": 3,
-     "views": 164858.0
-    },
-    {
-     "week": 4,
-     "views": 115962.0
-    },
-    {
-     "week": 5,
-     "views": 93939.0
-    },
-    {
-     "week": 6,
-     "views": 45073.0
-    }
-   ],
-   "social": {
-    "youtube_views": 2302969.0,
-    "youtube_videos": 5.0,
-    "instagram": null,
-    "tiktok": null
-   },
-   "yt_per_day": null,
-   "wiki_z": 1.7181816261012772,
-   "social_z": 1.6819006996049803,
-   "fan_rating": 0.1858702815331604,
-   "form_z": 0.035921776997600394,
-   "pro_strength": 0.46153846153846156,
-   "p_week": {
-    "6": 0.1139,
-    "7": 0.1057,
-    "8": 0.10525,
-    "9": 0.13265,
-    "10": 0.17685
-   },
-   "p_final": 0.36565,
-   "p_win": 0.11195
+   "p_win": 0.02075
   },
   {
    "celebrity": "Connor Wood",
@@ -1399,7 +1329,7 @@ window.DWTS = {
    "couple": "Connor & Rylee",
    "notability": "Stand-up comedian & podcaster",
    "category": "actor/tv",
-   "status": "Participating",
+   "status": "Finalist",
    "place": null,
    "alive": true,
    "photo": null,
@@ -1442,150 +1372,155 @@ window.DWTS = {
     },
     {
      "week": 6,
+     "score": 32.0,
+     "max": 40,
+     "dance": "Viennese waltz"
+    },
+    {
+     "week": 7,
+     "score": 37.0,
+     "max": 40,
+     "dance": "Contemporary"
+    },
+    {
+     "week": 8,
+     "score": 32.0,
+     "max": 40,
+     "dance": "Waltz"
+    },
+    {
+     "week": 9,
+     "score": 27.0,
+     "max": 30,
+     "dance": "Argentine tango"
+    },
+    {
+     "week": 10,
+     "score": 24.0,
+     "max": 30,
+     "dance": "Jive"
+    },
+    {
+     "week": 10,
+     "score": 24.0,
+     "max": 30,
+     "dance": "Quickstep"
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
+     "score": null,
+     "max": 30,
+     "dance": null
+    },
+    {
+     "week": 11,
      "score": null,
      "max": 30,
      "dance": null
     }
    ],
-   "wiki_views": [
+   "instagram": [
     {
-     "week": 1,
-     "views": 14780.0
-    },
-    {
-     "week": 2,
-     "views": 75502.0
-    },
-    {
-     "week": 3,
-     "views": 40115.0
-    },
-    {
-     "week": 4,
-     "views": 29198.0
-    },
-    {
-     "week": 5,
-     "views": 43632.0
-    },
-    {
-     "week": 6,
-     "views": 15246.0
+     "week": 10,
+     "likes": 97909.0,
+     "posts": 1
     }
    ],
    "social": {
     "youtube_views": 950763.0,
     "youtube_videos": 5.0,
-    "instagram": null,
     "tiktok": null
    },
    "yt_per_day": null,
-   "wiki_z": -0.5515565256855253,
-   "social_z": -0.059305540423055955,
-   "fan_rating": 0.4010248528754562,
-   "form_z": -0.5949066100054278,
+   "fan_rating": 1.1455491915537959,
    "pro_strength": 0.5346153846153847,
-   "p_week": {
-    "6": 0.228,
-    "7": 0.2547,
-    "8": 0.2301,
-    "9": 0.1642,
-    "10": 0.0786
+   "p_week": {},
+   "p_final": 1.0,
+   "p_place": {
+    "1": 0.0502,
+    "2": 0.1737,
+    "3": 0.309,
+    "4": 0.2634,
+    "5": 0.2037
    },
-   "p_final": 0.0444,
-   "p_win": 0.00265
+   "p_win": 0.0502
   }
  ],
- "order": [
-  {
-   "week": 6,
-   "out": [
-    "Connor Wood"
-   ],
-   "n": 1
-  },
-  {
-   "week": 7,
-   "out": [
-    "Tyler Cameron"
-   ],
-   "n": 1
-  },
-  {
-   "week": 8,
-   "out": [
-    "Jackson Olson"
-   ],
-   "n": 1
-  },
-  {
-   "week": 9,
-   "out": [
-    "Tatyana Ali"
-   ],
-   "n": 1
-  },
-  {
-   "week": 10,
-   "out": [
-    "Julia Stiles"
-   ],
-   "n": 1
-  }
- ],
+ "order": [],
  "finalists": [
-  "Jenna Dewan",
-  "Harry Shum Jr.",
   "Ezra Frech",
-  "Maura Higgins",
-  "Amber Glenn"
+  "Amber Glenn",
+  "Connor Wood",
+  "Tatyana Ali",
+  "Maura Higgins"
  ],
+ "finish": [
+  "Ezra Frech",
+  "Amber Glenn",
+  "Connor Wood",
+  "Tatyana Ali",
+  "Maura Higgins"
+ ],
+ "rule": {
+  "k": 1.8666833545022852,
+  "instagram_share": 0.5,
+  "instagram_share_source": "default",
+  "instagram_weeks": 1
+ },
  "backtest": {
   "weeks": 102,
-  "model": 0.4133986928104575,
-  "top3": 0.803921568627451,
+  "model": 0.42320261437908496,
+  "top3": 0.7745098039215687,
   "lowest_score": 0.34774183006535947,
   "random": 0.1428205373058314,
-  "log_loss": 1.4616949231660203,
+  "log_loss": 1.4722320403900861,
   "log_loss_random": 1.940978056827561,
-  "brier": 0.08776364422674605,
+  "brier": 0.08738704253068269,
   "brier_random": 0.10690544835281678,
   "calibration": [
    {
-    "predicted": 0.030087841067830468,
-    "actual": 0.014792899408284023,
-    "n": 338
+    "predicted": 0.025639536422920994,
+    "actual": 0.022556390977443608,
+    "n": 399
    },
    {
-    "predicted": 0.0721819906768867,
-    "actual": 0.038910505836575876,
-    "n": 257
+    "predicted": 0.0720792200740694,
+    "actual": 0.05405405405405406,
+    "n": 185
    },
    {
-    "predicted": 0.13892299113077156,
-    "actual": 0.18877551020408162,
-    "n": 196
+    "predicted": 0.13916057105031143,
+    "actual": 0.11891891891891893,
+    "n": 185
    },
    {
-    "predicted": 0.2390502470442442,
-    "actual": 0.3037974683544304,
-    "n": 79
+    "predicted": 0.24029653196486414,
+    "actual": 0.3448275862068966,
+    "n": 87
    },
    {
-    "predicted": 0.36823863487352737,
-    "actual": 0.3877551020408163,
-    "n": 49
+    "predicted": 0.36333877863430736,
+    "actual": 0.3939393939393939,
+    "n": 66
    },
    {
-    "predicted": 0.5984397429446607,
-    "actual": 0.58,
-    "n": 50
+    "predicted": 0.6058304752753799,
+    "actual": 0.574468085106383,
+    "n": 47
    }
   ],
   "seasons": "21\u201334",
-  "l2": 20.0,
-  "log_loss_judges": 1.5570745831380481,
-  "model_judges": 0.3790849673202614
+  "l2": 0.5,
+  "model_logit": 0.4084967320261438,
+  "log_loss_logit": 1.440497800078289,
+  "model_judges": 0.3790849673202614,
+  "log_loss_judges": 1.563747241988083
  },
  "record": [],
  "hindsight": [
@@ -1593,16 +1528,212 @@ window.DWTS = {
    "week": 1,
    "theme": "Premiere",
    "predicted": [
-    "Guillermo Rodriguez",
-    "Conner Leavitt"
+    "Tatyana Ali",
+    "Ciara Miller"
    ],
    "actual": [
     "Conner Leavitt",
     "Sarah Jane Nader"
    ],
-   "hit": true,
-   "rank_of_actual": 2,
-   "p_actual": 0.2064944589431182
+   "hit": false,
+   "rank_of_actual": 5,
+   "p_actual": 0.18532502914094434,
+   "has_ig": false,
+   "vote_orders": 0,
+   "table": [
+    {
+     "celebrity": "Ezra Frech",
+     "score": 20.0,
+     "judge_rank": 3,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 1,
+     "p_out": 0.008706935148598037,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 21.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 2,
+     "p_out": 0.009893115618415615,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 19.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 3,
+     "p_out": 0.011240894180209697,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 21.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 4,
+     "p_out": 0.01277228598597017,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Giada De Laurentiis",
+     "score": 16.0,
+     "judge_rank": 8,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 5,
+     "p_out": 0.02748370532606821,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 16.0,
+     "judge_rank": 8,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 6,
+     "p_out": 0.03548222399475932,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Julia Stiles",
+     "score": 18.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 11,
+     "combined_rank": 7,
+     "p_out": 0.04031610875558162,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tyler Cameron",
+     "score": 17.0,
+     "judge_rank": 7,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 9,
+     "combined_rank": 7,
+     "p_out": 0.04031610875558162,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Guillermo Rodriguez",
+     "score": 10.0,
+     "judge_rank": 16,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 9,
+     "p_out": 0.05914008340244459,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 18.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 15,
+     "combined_rank": 10,
+     "p_out": 0.06719697261984711,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Conner Leavitt",
+     "score": 12.0,
+     "judge_rank": 14,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 8,
+     "combined_rank": 11,
+     "p_out": 0.08675315085719625,
+     "out": true,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Sarah Jane Nader",
+     "score": 14.0,
+     "judge_rank": 13,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 10,
+     "combined_rank": 12,
+     "p_out": 0.09857187828374811,
+     "out": true,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jackson Olson",
+     "score": 15.0,
+     "judge_rank": 11,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 12,
+     "combined_rank": 13,
+     "p_out": 0.09857187828374814,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Taylor Hanson",
+     "score": 16.0,
+     "judge_rank": 8,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 16,
+     "combined_rank": 14,
+     "p_out": 0.1120007180417018,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Ciara Miller",
+     "score": 15.0,
+     "judge_rank": 11,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 14,
+     "combined_rank": 15,
+     "p_out": 0.1272590221497786,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 12.0,
+     "judge_rank": 14,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 13,
+     "combined_rank": 16,
+     "p_out": 0.16429491859635123,
+     "out": false,
+     "vote_range": null
+    }
+   ]
   },
   {
    "week": 2,
@@ -1614,8 +1745,180 @@ window.DWTS = {
     "Giada De Laurentiis"
    ],
    "hit": false,
-   "rank_of_actual": 2,
-   "p_actual": 0.14855318046815133
+   "rank_of_actual": 3,
+   "p_actual": 0.11886035928643017,
+   "has_ig": false,
+   "vote_orders": 0,
+   "table": [
+    {
+     "celebrity": "Ezra Frech",
+     "score": 21.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 1,
+     "p_out": 0.009705441607869132,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 21.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 2,
+     "p_out": 0.011246479079453205,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 19.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 2,
+     "p_out": 0.011246479079453205,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 21.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 4,
+     "p_out": 0.015101466969783546,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 18.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 4,
+     "p_out": 0.015101466969783546,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Julia Stiles",
+     "score": 16.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 6,
+     "p_out": 0.04236703659427492,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jackson Olson",
+     "score": 18.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 10,
+     "combined_rank": 7,
+     "p_out": 0.04909410719957484,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tyler Cameron",
+     "score": 16.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 8,
+     "p_out": 0.05688930724149449,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Ciara Miller",
+     "score": 18.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 12,
+     "combined_rank": 9,
+     "p_out": 0.06592223513222753,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 18.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 13,
+     "combined_rank": 10,
+     "p_out": 0.07638941825009526,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 15.0,
+     "judge_rank": 11,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 9,
+     "combined_rank": 11,
+     "p_out": 0.10257363823779775,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Giada De Laurentiis",
+     "score": 12.0,
+     "judge_rank": 13,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 8,
+     "combined_rank": 12,
+     "p_out": 0.11886035928643017,
+     "out": true,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Taylor Hanson",
+     "score": 15.0,
+     "judge_rank": 11,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 11,
+     "combined_rank": 13,
+     "p_out": 0.1377330984102041,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Guillermo Rodriguez",
+     "score": 12.0,
+     "judge_rank": 13,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 14,
+     "combined_rank": 14,
+     "p_out": 0.2877694659415585,
+     "out": false,
+     "vote_range": null
+    }
+   ]
   },
   {
    "week": 3,
@@ -1628,7 +1931,167 @@ window.DWTS = {
    ],
    "hit": false,
    "rank_of_actual": 2,
-   "p_actual": 0.11262626969002004
+   "p_actual": 0.1478491214919701,
+   "has_ig": false,
+   "vote_orders": 0,
+   "table": [
+    {
+     "celebrity": "Ezra Frech",
+     "score": 21.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 1,
+     "p_out": 0.011493789817744418,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 24.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 1,
+     "p_out": 0.011493789817744418,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 22.0,
+     "judge_rank": 3,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 3,
+     "p_out": 0.01348335501784461,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 24.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 4,
+     "p_out": 0.013483355017844617,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 21.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 4,
+     "p_out": 0.013483355017844617,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Julia Stiles",
+     "score": 19.0,
+     "judge_rank": 8,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 6,
+     "p_out": 0.048358822578952486,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 21.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 11,
+     "combined_rank": 7,
+     "p_out": 0.05672969346197205,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 20.0,
+     "judge_rank": 7,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 10,
+     "combined_rank": 8,
+     "p_out": 0.0780692260629762,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jackson Olson",
+     "score": 18.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 8,
+     "combined_rank": 8,
+     "p_out": 0.0780692260629762,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Ciara Miller",
+     "score": 18.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 9,
+     "combined_rank": 10,
+     "p_out": 0.09158294241211802,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tyler Cameron",
+     "score": 17.0,
+     "judge_rank": 12,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 11,
+     "p_out": 0.10743587151863683,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Taylor Hanson",
+     "score": 18.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 12,
+     "combined_rank": 12,
+     "p_out": 0.1478491214919701,
+     "out": true,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Guillermo Rodriguez",
+     "score": 15.0,
+     "judge_rank": 13,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 13,
+     "combined_rank": 13,
+     "p_out": 0.3284674517213753,
+     "out": false,
+     "vote_range": null
+    }
+   ]
   },
   {
    "week": 4,
@@ -1640,8 +2103,156 @@ window.DWTS = {
     "Ciara Miller"
    ],
    "hit": false,
-   "rank_of_actual": 7,
-   "p_actual": 0.05542837096027629
+   "rank_of_actual": 5,
+   "p_actual": 0.08700547047194451,
+   "has_ig": false,
+   "vote_orders": 0,
+   "table": [
+    {
+     "celebrity": "Ezra Frech",
+     "score": 24.0,
+     "judge_rank": 2,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 1,
+     "p_out": 0.009041785234559308,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 24.0,
+     "judge_rank": 2,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 2,
+     "p_out": 0.010761977061289884,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 24.0,
+     "judge_rank": 2,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 3,
+     "p_out": 0.012809433896421737,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 25.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 3,
+     "p_out": 0.012809433896421737,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 23.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 5,
+     "p_out": 0.030599850937967025,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Julia Stiles",
+     "score": 21.0,
+     "judge_rank": 6,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 6,
+     "p_out": 0.04335059478432208,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jackson Olson",
+     "score": 21.0,
+     "judge_rank": 6,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 8,
+     "combined_rank": 7,
+     "p_out": 0.061414484402692565,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Ciara Miller",
+     "score": 21.0,
+     "judge_rank": 6,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 10,
+     "combined_rank": 8,
+     "p_out": 0.08700547047194451,
+     "out": true,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 20.0,
+     "judge_rank": 10,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 9,
+     "p_out": 0.10355818603685715,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tyler Cameron",
+     "score": 21.0,
+     "judge_rank": 6,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 11,
+     "combined_rank": 9,
+     "p_out": 0.10355818603685715,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 19.0,
+     "judge_rank": 11,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 9,
+     "combined_rank": 11,
+     "p_out": 0.17462163851975832,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Guillermo Rodriguez",
+     "score": 13.0,
+     "judge_rank": 12,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 12,
+     "combined_rank": 12,
+     "p_out": 0.35046895872090844,
+     "out": false,
+     "vote_range": null
+    }
+   ]
   },
   {
    "week": 5,
@@ -1654,32 +2265,671 @@ window.DWTS = {
    ],
    "hit": true,
    "rank_of_actual": 1,
-   "p_actual": 0.3895873469730456
+   "p_actual": 0.33306831604448034,
+   "has_ig": false,
+   "vote_orders": 0,
+   "table": [
+    {
+     "celebrity": "Ezra Frech",
+     "score": 36.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 1,
+     "p_out": 0.007219382884028628,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 36.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 2,
+     "p_out": 0.010590181420138267,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 33.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 3,
+     "p_out": 0.015534837854292834,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 34.0,
+     "judge_rank": 3,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 4,
+     "p_out": 0.02278820140892533,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 33.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 4,
+     "p_out": 0.02278820140892533,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Julia Stiles",
+     "score": 33.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 6,
+     "p_out": 0.03342822939798142,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jackson Olson",
+     "score": 31.0,
+     "judge_rank": 7,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 7,
+     "p_out": 0.07193165008640746,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 29.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 8,
+     "combined_rank": 8,
+     "p_out": 0.1277982803037812,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tyler Cameron",
+     "score": 30.0,
+     "judge_rank": 8,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 9,
+     "combined_rank": 8,
+     "p_out": 0.1277982803037812,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 25.0,
+     "judge_rank": 10,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 10,
+     "combined_rank": 10,
+     "p_out": 0.227054438887258,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Guillermo Rodriguez",
+     "score": 22.0,
+     "judge_rank": 11,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 11,
+     "combined_rank": 11,
+     "p_out": 0.33306831604448034,
+     "out": true,
+     "vote_range": null
+    }
+   ]
+  },
+  {
+   "week": 7,
+   "theme": "Horror Movie Night",
+   "predicted": [
+    "Tyler Cameron",
+    "Tatyana Ali"
+   ],
+   "actual": [
+    "Jackson Olson",
+    "Tyler Cameron"
+   ],
+   "hit": true,
+   "rank_of_actual": 1,
+   "p_actual": 0.3340659197082554,
+   "has_ig": false,
+   "vote_orders": 0,
+   "table": [
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 40.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 1,
+     "p_out": 0.015607058778666093,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 37.0,
+     "judge_rank": 2,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 1,
+     "p_out": 0.015607058778666093,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Ezra Frech",
+     "score": 35.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 3,
+     "p_out": 0.02388986243009774,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 36.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 4,
+     "p_out": 0.045243117563439565,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 32.0,
+     "judge_rank": 7,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 5,
+     "p_out": 0.06925403881843323,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 37.0,
+     "judge_rank": 2,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 10,
+     "combined_rank": 6,
+     "p_out": 0.08568235555347396,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Jackson Olson",
+     "score": 35.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 6,
+     "p_out": 0.08568235555347396,
+     "out": true,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Julia Stiles",
+     "score": 26.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 8,
+     "p_out": 0.16226702421418643,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 28.0,
+     "judge_rank": 8,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 9,
+     "combined_rank": 9,
+     "p_out": 0.2483835641547814,
+     "out": false,
+     "vote_range": null
+    },
+    {
+     "celebrity": "Tyler Cameron",
+     "score": 26.0,
+     "judge_rank": 9,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 8,
+     "combined_rank": 9,
+     "p_out": 0.2483835641547814,
+     "out": true,
+     "vote_range": null
+    }
+   ]
+  },
+  {
+   "week": 8,
+   "theme": "Disney Night",
+   "predicted": [
+    "Connor Wood"
+   ],
+   "actual": [
+    "Julia Stiles"
+   ],
+   "hit": false,
+   "rank_of_actual": 4,
+   "p_actual": 0.13923078646540005,
+   "has_ig": false,
+   "vote_orders": 5352,
+   "table": [
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 40.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 1,
+     "p_out": 0.011857677059613566,
+     "out": false,
+     "vote_range": [
+      1,
+      8
+     ]
+    },
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 40.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 2,
+     "p_out": 0.02049833816082222,
+     "out": false,
+     "vote_range": [
+      1,
+      8
+     ]
+    },
+    {
+     "celebrity": "Ezra Frech",
+     "score": 37.0,
+     "judge_rank": 3,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 3,
+     "p_out": 0.026951203976923847,
+     "out": false,
+     "vote_range": [
+      1,
+      8
+     ]
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 34.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 4,
+     "p_out": 0.06125714101961114,
+     "out": false,
+     "vote_range": [
+      1,
+      7
+     ]
+    },
+    {
+     "celebrity": "Julia Stiles",
+     "score": 33.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 5,
+     "p_out": 0.13923078646540005,
+     "out": true,
+     "vote_range": [
+      5,
+      8
+     ]
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 32.0,
+     "judge_rank": 7,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 6,
+     "p_out": 0.18306056307864169,
+     "out": false,
+     "vote_range": [
+      1,
+      6
+     ]
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 33.0,
+     "judge_rank": 5,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 8,
+     "combined_rank": 7,
+     "p_out": 0.2406879297704545,
+     "out": false,
+     "vote_range": [
+      1,
+      7
+     ]
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 32.0,
+     "judge_rank": 7,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 8,
+     "p_out": 0.3164563604685329,
+     "out": false,
+     "vote_range": [
+      1,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "week": 9,
+   "theme": "Grammy Night",
+   "predicted": [
+    "Tatyana Ali"
+   ],
+   "actual": [
+    "Jenna Dewan"
+   ],
+   "hit": false,
+   "rank_of_actual": 7,
+   "p_actual": 0.02732871093550236,
+   "has_ig": false,
+   "vote_orders": 240,
+   "table": [
+    {
+     "celebrity": "Jenna Dewan",
+     "score": 28.0,
+     "judge_rank": 2,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 1,
+     "combined_rank": 1,
+     "p_out": 0.02732871093550236,
+     "out": true,
+     "vote_range": [
+      7,
+      7
+     ]
+    },
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 29.0,
+     "judge_rank": 1,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 3,
+     "combined_rank": 2,
+     "p_out": 0.03760872273113281,
+     "out": false,
+     "vote_range": [
+      1,
+      6
+     ]
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 28.0,
+     "judge_rank": 2,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 4,
+     "combined_rank": 3,
+     "p_out": 0.07122418008534681,
+     "out": false,
+     "vote_range": [
+      1,
+      6
+     ]
+    },
+    {
+     "celebrity": "Ezra Frech",
+     "score": 27.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 2,
+     "combined_rank": 3,
+     "p_out": 0.07122418008534681,
+     "out": false,
+     "vote_range": [
+      1,
+      5
+     ]
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 27.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 5,
+     "combined_rank": 5,
+     "p_out": 0.1856247021969779,
+     "out": false,
+     "vote_range": [
+      1,
+      5
+     ]
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 27.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 6,
+     "combined_rank": 6,
+     "p_out": 0.2554495882901734,
+     "out": false,
+     "vote_range": [
+      1,
+      5
+     ]
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 27.0,
+     "judge_rank": 4,
+     "ig_likes": null,
+     "ig_rank": null,
+     "viewer_rank": 7,
+     "combined_rank": 7,
+     "p_out": 0.35153991567551984,
+     "out": false,
+     "vote_range": [
+      1,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "week": 10,
+   "theme": "Semi-Finals",
+   "predicted": [
+    "Tatyana Ali"
+   ],
+   "actual": [
+    "Harry Shum Jr."
+   ],
+   "hit": false,
+   "rank_of_actual": 6,
+   "p_actual": 0.02726619556970721,
+   "has_ig": true,
+   "vote_orders": 1,
+   "table": [
+    {
+     "celebrity": "Harry Shum Jr.",
+     "score": 60.0,
+     "judge_rank": 1,
+     "ig_likes": 55707.0,
+     "ig_rank": 3,
+     "viewer_rank": 2,
+     "combined_rank": 1,
+     "p_out": 0.02726619556970721,
+     "out": true,
+     "vote_range": [
+      6,
+      6
+     ]
+    },
+    {
+     "celebrity": "Amber Glenn",
+     "score": 60.0,
+     "judge_rank": 1,
+     "ig_likes": 40291.5,
+     "ig_rank": 5,
+     "viewer_rank": 4,
+     "combined_rank": 2,
+     "p_out": 0.05867204079394545,
+     "out": false,
+     "vote_range": [
+      5,
+      5
+     ]
+    },
+    {
+     "celebrity": "Ezra Frech",
+     "score": 57.0,
+     "judge_rank": 4,
+     "ig_likes": 68263.0,
+     "ig_rank": 2,
+     "viewer_rank": 1,
+     "combined_rank": 2,
+     "p_out": 0.05867204079394545,
+     "out": false,
+     "vote_range": [
+      3,
+      3
+     ]
+    },
+    {
+     "celebrity": "Maura Higgins",
+     "score": 59.0,
+     "judge_rank": 3,
+     "ig_likes": 34949.0,
+     "ig_rank": 6,
+     "viewer_rank": 5,
+     "combined_rank": 4,
+     "p_out": 0.18520007930913482,
+     "out": false,
+     "vote_range": [
+      4,
+      4
+     ]
+    },
+    {
+     "celebrity": "Connor Wood",
+     "score": 48.0,
+     "judge_rank": 6,
+     "ig_likes": 97909.0,
+     "ig_rank": 1,
+     "viewer_rank": 3,
+     "combined_rank": 5,
+     "p_out": 0.2716717578792924,
+     "out": false,
+     "vote_range": [
+      1,
+      1
+     ]
+    },
+    {
+     "celebrity": "Tatyana Ali",
+     "score": 55.0,
+     "judge_rank": 5,
+     "ig_likes": 41461.0,
+     "ig_rank": 4,
+     "viewer_rank": 5,
+     "combined_rank": 6,
+     "p_out": 0.3985178856539747,
+     "out": false,
+     "vote_range": [
+      2,
+      2
+     ]
+    }
+   ]
   }
  ],
  "l2_scores": {
-  "0.5": 1.6682715404250321,
-  "2.0": 1.6475376329943503,
-  "5.0": 1.6327016533788095,
-  "10.0": 1.6238192271444327,
-  "20.0": 1.62286773809471,
-  "40.0": 1.6379879830131119
+  "0.5": 1.6992194552292144,
+  "2.0": 1.713294036070731,
+  "5.0": 1.7220014293624064,
+  "10.0": 1.7381686478889289,
+  "20.0": 1.7152641067964605,
+  "40.0": 1.7198148767040233
  },
  "coefficients": {
-  "score_z": -0.53790817798443,
-  "score_z_save": -0.1749732964341837,
-  "form_z": -0.4654437160552922,
-  "trend": -0.07246446192913845,
-  "bottom_prev": 0.42720257258211725,
-  "fan_rating": -0.2675336810427768,
-  "pro_strength": -0.06013409567245225,
-  "cat_athlete": -0.04370494836472983,
-  "cat_reality": 0.02961187369055901,
-  "cat_music": 0.10358043632539451,
-  "cat_social": 0.018018702118392325,
-  "wiki_z": 0.06946634269798269,
-  "wiki_missing": 0.007315902023667276,
-  "social_z": -0.04079564837873373,
+  "judge_pts": -1.8167502152870663,
+  "judge_pts_save": -1.3010635699452624,
+  "form_pts": -1.7909297431309963,
+  "trend": -0.02582047215606039,
+  "bottom_prev": 0.6885810422213398,
+  "fan_rating": -0.4166108798828432,
+  "pro_strength": -0.6376015639197435,
+  "cat_athlete": -0.026633244705716555,
+  "cat_reality": 0.09271320392384283,
+  "cat_music": 0.29910714334648325,
+  "cat_social": 0.14259036144370626,
+  "social_z": 0.08447680320358622,
   "social_missing": 0.0
  },
  "sims": 20000

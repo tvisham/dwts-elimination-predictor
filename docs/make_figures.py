@@ -11,13 +11,12 @@ INK, MUTED, GRID, GOLD, RED, TEAL = "#1f1a3a", "#6b6488", "#e6e3ef", "#c99a2e", 
 FONT = "font-family='Inter, Segoe UI, Helvetica, Arial, sans-serif'"
 
 LABELS = {
-    "score_z": "Higher judges' score this week", "score_z_save": "Higher score, judges'-save seasons",
-    "form_z": "Better form in earlier weeks", "trend": "Improving trend", "bottom_prev": "Times in bottom two",
+    "judge_pts": "Better judges' rank this week", "judge_pts_save": "Better rank, judges'-save seasons",
+    "form_pts": "Better ranks in earlier weeks", "trend": "Improving trend", "bottom_prev": "Times in bottom two",
     "fan_rating": "Higher fan rating", "pro_strength": "Stronger pro partner",
     "cat_athlete": "Athlete (vs actor/TV)", "cat_reality": "Reality star (vs actor/TV)",
     "cat_music": "Musician (vs actor/TV)", "cat_social": "Social media star (vs actor/TV)",
-    "wiki_z": "More Wikipedia pageviews", "wiki_missing": "No pageview data", "social_z": "More YouTube views",
-    "social_missing": "No YouTube data",
+    "social_z": "More YouTube views", "social_missing": "No YouTube data",
 }
 
 
@@ -33,9 +32,10 @@ def svg(w, h, body):
 
 def accuracy(d):
     b = d["backtest"]
-    rows = [("This model", b["model"], GOLD), ("Judges' score only", b["model_judges"], "#b9b4cc"),
+    rows = [("Judges + viewers rule", b["model"], GOLD), ("Same inputs, no ranking rule", b["model_logit"], "#b9b4cc"),
+            ("Judges' rank only", b["model_judges"], "#b9b4cc"),
             ("Lowest judges' score goes home", b["lowest_score"], "#b9b4cc"), ("Random guess", b["random"], "#b9b4cc")]
-    w, h, left, bar_w = 760, 270, 250, 440
+    w, h, left, bar_w = 760, 310, 250, 440
     out = [f"<text x='24' y='32' font-size='17' font-weight='600' fill='{INK}'>The model picks who goes home "
            f"{b['model']:.0%} of the time</text>",
            f"<text x='24' y='54' font-size='13' fill='{MUTED}'>Backtest, seasons {b['seasons']} ({b['weeks']} "
@@ -54,11 +54,12 @@ def accuracy(d):
 
 def weights(d):
     items = sorted(((LABELS[k], v) for k, v in d["coefficients"].items() if abs(v) >= 0.005), key=lambda kv: kv[1])
-    w, row, y0, mid, scale = 760, 26, 76, 430, 300
+    w, row, y0, mid = 760, 26, 76, 430
+    scale = min(300, 170 / max(abs(v) for _, v in items))  # longest bar about 170 px
     h = y0 + row * len(items) + 40
     out = [f"<text x='24' y='32' font-size='17' font-weight='600' fill='{INK}'>Low judges' scores and repeat "
            f"bottom-two finishes drive eliminations</text>",
-           f"<text x='24' y='54' font-size='13' fill='{MUTED}'>Model weights (features are standardised). "
+           f"<text x='24' y='54' font-size='13' fill='{MUTED}'>Fan-support model weights. "
            f"<tspan fill='{TEAL}'>Teal = safer</tspan>, <tspan fill='{RED}'>red = more likely to go home</tspan></text>",
            f"<line x1='{mid}' x2='{mid}' y1='{y0 - 8}' y2='{h - 30}' stroke='{MUTED}'/>"]
     for i, (name, v) in enumerate(items):

@@ -142,6 +142,17 @@
   footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 56px; line-height: 1.7; }
   footer details { margin-top: 6px; }
 
+  .weekpick { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .weekpick button { font: 500 12px Inter, sans-serif; color: var(--muted); background: var(--card); border: 1px solid var(--line);
+    border-radius: 99px; padding: 4px 12px; cursor: pointer; }
+  .weekpick button.on { color: var(--bg); background: var(--gold); border-color: var(--gold); }
+  #ranks td { vertical-align: middle; }
+  #ranks th, #ranks td { padding: 8px 7px; }
+  #ranks .duo { --s: 28px; vertical-align: middle; margin-right: 6px; }
+  #ranks tr.went td { background: #ff5d6c14; }
+  .fill.gold-fill { background: linear-gradient(90deg, #b8892f, var(--gold2)); }
+  .verdict .pct b.win { color: var(--gold2); }
+
   @media (max-width: 720px) { .two { grid-template-columns: 1fr; } }
   @media (max-width: 560px) {
     .bar { grid-template-columns: 1fr 52px; }
@@ -172,26 +183,34 @@
   </header>
 
   <section>
-    <h2>Danger zone</h2>
+    <h2 id="danger-h">Danger zone</h2>
     <p class="sub" id="danger-sub"></p>
     <div class="bars" id="bars"></div>
   </section>
 
   <section>
-    <h2>Projected elimination path</h2>
+    <h2>Judges' ranks + viewers' votes</h2>
+    <p class="sub" id="rule-sub"></p>
+    <div class="weekpick" id="weekpick" role="group" aria-label="Pick a week"></div>
+    <div class="tablewrap"><table id="ranks"></table></div>
+    <p class="sub" id="ranks-note" style="margin-top:10px"></p>
+  </section>
+
+  <section>
+    <h2 id="path-h">Projected elimination path</h2>
     <p class="sub" id="path-sub"></p>
     <div class="timeline" id="timeline"></div>
   </section>
 
   <section>
     <h2>Season odds</h2>
-    <p class="sub">Chance each couple goes home in a given week, makes the finale, or takes the Len Goodman Mirrorball Trophy.</p>
+    <p class="sub" id="odds-sub"></p>
     <div class="tablewrap"><table id="odds"></table></div>
   </section>
 
   <section>
     <h2>The couples</h2>
-    <p class="sub">Judges' scores each week (sparkline, % of max), fan support the model has inferred, and views across platforms.</p>
+    <p class="sub">Judges' scores each week (sparkline, % of max), Instagram likes on their latest performance posts, YouTube views, and the fan support the model has inferred.</p>
     <div class="cards" id="cards"></div>
   </section>
 
@@ -221,7 +240,7 @@
   </section>
 
   <footer>
-    Data from Wikipedia season pages, Wikimedia pageviews and YouTube. Just for fun, so don't stake your vote on it.
+    Data from Wikipedia season pages, Instagram likes on @dancingwiththestars posts, and YouTube. Just for fun, so don't stake your vote on it.
     <details><summary>Photo credits</summary><div id="credits"></div></details>
   </footer>
 </div>
@@ -234,6 +253,7 @@ const fmt = n => n == null ? "–" : n >= 1e6 ? (n / 1e6).toFixed(1) + "M" : n >
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const $ = id => document.getElementById(id);
 const initials = name => name.replace(/[^A-Za-z ]/g, "").split(" ").filter(Boolean).slice(0, 2).map(w => w[0]).join("");
+const ordinal = n => n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 10 * (Math.floor(n / 10) % 10 !== 1)] || "th");
 
 // one round photo (or a monogram when Wikipedia has no picture)
 const av = (photo, name, cls = "") => photo
@@ -243,73 +263,143 @@ const av = (photo, name, cls = "") => photo
 const duo = c => c.couple_photo
   ? `<span class="duo"><span class="av both" role="img" aria-label="${esc(c.couple)}" style="background-image:url('${esc(c.couple_photo.file)}')"></span></span>`
   : `<span class="duo">${av(c.photo, c.celebrity)}${av(c.pro_photo, c.pro, "pro")}</span>`;
-const photoStrip = c => c.couple_photo
-  ? `<div class="photos one">${tile(c.couple_photo, c.couple, "ph-couple")}</div>`
-  : `<div class="photos">${tile(c.photo, c.celebrity, "ph-celeb")}${tile(c.pro_photo, c.pro, "ph-pro")}</div>`;
 const tile = (photo, name, cls) => photo
   ? `<img class="${cls}" src="${esc(photo.file)}" alt="${esc(name)}" loading="lazy">`
   : `<div class="${cls} initials" role="img" aria-label="${esc(name)}">${esc(initials(name))}</div>`;
+const photoStrip = c => c.couple_photo
+  ? `<div class="photos one">${tile(c.couple_photo, c.couple, "ph-couple")}</div>`
+  : `<div class="photos">${tile(c.photo, c.celebrity, "ph-celeb")}${tile(c.pro_photo, c.pro, "ph-pro")}</div>`;
 
+const F = D.finale_mode;
 const alive = D.couples.filter(c => c.alive);
 const wk = String(D.week);
-alive.forEach(c => c.now = c.p_week[wk] ?? 0);
+alive.forEach(c => c.now = F ? c.p_win : (c.p_week[wk] ?? 0));
 alive.sort((a, b) => b.now - a.now);
 const byName = Object.fromEntries(D.couples.map(c => [c.celebrity, c]));
+const nAlive = alive.length;
 
 // ---- hero
 $("title").textContent = `Season ${D.season}`;
-$("meta").textContent = `Week ${D.week}: ${D.theme} · ${alive.length} couples left · updated ${D.generated}`;
+$("meta").textContent = `Week ${D.week}: ${D.theme} · ${nAlive} couples left · updated ${D.generated}`;
 const leader = alive[0];
-$("verdict").innerHTML = `<div class="label">Predicted to go home · Week ${D.week}</div>
-  ${duo(leader)}
-  <div class="name">${esc(leader.couple)}</div>
-  <div class="pct"><b>${pct(leader.now)}</b> chance of elimination · next most at risk: ${esc(alive[1].celebrity)} (${pct(alive[1].now)})</div>`;
+$("verdict").innerHTML = F
+  ? `<div class="label">Predicted Mirrorball winner</div>${duo(leader)}
+     <div class="name">${esc(leader.couple)}</div>
+     <div class="pct"><b class="win">${pct(leader.now)}</b> chance to win · next: ${esc(alive[1].celebrity)} (${pct(alive[1].now)})</div>`
+  : `<div class="label">Predicted to go home · Week ${D.week}</div>${duo(leader)}
+     <div class="name">${esc(leader.couple)}</div>
+     <div class="pct"><b>${pct(leader.now)}</b> chance of elimination · next most at risk: ${esc(alive[1].celebrity)} (${pct(alive[1].now)})</div>`;
 
-// ---- danger zone
-$("danger-sub").textContent = D.week_scored
-  ? `Week ${D.week} (${D.theme}) judges' scores are in. Odds blend scores, form, partner, fan support and views.`
-  : D.scores_in
-    ? `Some Week ${D.week} scores are still to come; missing ones are simulated from each couple's form.`
-    : `Week ${D.week} (${D.theme}) hasn't aired yet, so scores are simulated from each couple's form. Re-run after the show for sharper odds.`;
+// ---- danger zone (finale: who wins)
+$("danger-h").textContent = F ? "Finale: who lifts the Mirrorball?" : "Danger zone";
+$("danger-sub").textContent = F
+  ? `${D.theme} hasn't been scored yet, so judges' scores are simulated from form. The same judges + viewers rule ranks all ${nAlive} couples, lowest total out first.`
+  : D.week_scored
+    ? `Week ${D.week} (${D.theme}) judges' scores are in. Odds come from judges' ranks plus estimated viewer ranks.`
+    : D.scores_in
+      ? `Some Week ${D.week} scores are still to come; missing ones are simulated from each couple's form.`
+      : `Week ${D.week} (${D.theme}) hasn't aired yet, so scores are simulated from each couple's form. Re-run after the show for sharper odds.`;
 const maxP = Math.max(...alive.map(c => c.now));
 $("bars").innerHTML = alive.map((c, i) => {
-  const s = c.scores.find(x => x.week === D.week);
-  const score = s && s.score != null ? `${s.score}/${s.max}` : "not danced yet";
+  const s = c.scores.filter(x => x.week === D.week);
+  const sc = s.length && s.every(x => x.score != null) ? `${s.reduce((t, x) => t + x.score, 0)}/${s.reduce((t, x) => t + x.max, 0)}` : "not danced yet";
+  const dances = s.map(x => x.dance).filter(Boolean).join(" + ");
   return `<div class="bar ${i === 0 ? "top" : ""}">
-    <div class="who">${duo(c)}<div><b>${esc(c.couple)}</b><span>${esc(s?.dance || "")}${s?.dance ? " · " : ""}${score}</span></div></div>
-    <div class="track"><div class="fill" style="width:${(c.now / maxP * 100).toFixed(1)}%"></div></div>
+    <div class="who">${duo(c)}<div><b>${esc(c.couple)}</b><span>${esc(dances)}${dances ? " · " : ""}${sc}</span></div></div>
+    <div class="track"><div class="fill ${F ? "gold-fill" : ""}" style="width:${(c.now / maxP * 100).toFixed(1)}%"></div></div>
     <div class="p">${pct(c.now)}</div></div>`;
 }).join("");
 
-// ---- elimination path
+// ---- judges' ranks + viewers' votes
+const RULE = D.rule;
+$("rule-sub").innerHTML = `Like the show, each week the judges' scores are ranked (1 = best) and so are the viewers' votes. Add the two and the lowest combined total is in danger.
+  The votes are secret, so the viewer rank is an estimate: <b>${pct(RULE.instagram_share)}</b> Instagram likes on that week's performance posts and
+  <b>${pct(1 - RULE.instagram_share)}</b> the model's fan-support estimate (form, bottom-two history, fan rating, partner, YouTube).
+  ${RULE.instagram_share_source === "fitted"
+    ? `That split was fit on ${RULE.instagram_weeks} weeks with likes.`
+    : `Only ${RULE.instagram_weeks} week${RULE.instagram_weeks === 1 ? " has" : "s have"} likes so far, so the split is a 50/50 default until there are 4.`}
+  <b>Possible vote place</b> works backwards from the result: every viewer order that would have produced who actually went home.`;
+const Hs = D.hindsight || [];
+let picked = (Hs.filter(h => h.has_ig).at(-1) || Hs.at(-1) || {}).week;
+const range = r => !r ? "–" : r[0] === r[1] ? ordinal(r[0]) : `${ordinal(r[0])}–${ordinal(r[1])}`;
+function drawRanks() {
+  const h = Hs.find(x => x.week === picked);
+  if (!h) { $("ranks").innerHTML = ""; return; }
+  $("weekpick").innerHTML = Hs.map(x => `<button type="button" class="${x.week === picked ? "on" : ""}" data-w="${x.week}" aria-pressed="${x.week === picked}">Wk ${x.week}${x.has_ig ? " ♥" : ""}</button>`).join("");
+  $("ranks").innerHTML = `<tr><th>Couple</th><th>Judges'<br>score</th><th>Judges'<br>rank</th><th>Instagram<br>likes</th><th>Instagram<br>rank</th><th>Viewer rank<br>(estimate)</th><th>Combined<br>rank</th><th>Odds of<br>going home</th><th>Possible<br>vote place</th><th>Result</th></tr>`
+    + h.table.map(t => `<tr class="${t.out ? "went" : ""}"><td>${duo(byName[t.celebrity])} <b>${esc(byName[t.celebrity].couple)}</b></td>
+      <td>${t.score ?? "–"}</td><td>${t.judge_rank}</td><td>${t.ig_likes ? fmt(t.ig_likes) : "–"}</td><td>${t.ig_rank ?? "–"}</td>
+      <td>${t.viewer_rank}</td><td class="gold">${t.combined_rank}</td><td>${pct(t.p_out)}</td>
+      <td>${range(t.vote_range)}</td>
+      <td class="${t.out ? "miss" : ""}">${t.out ? "Eliminated" : "Safe"}</td></tr>`).join("");
+  const out = h.table.filter(t => t.out);
+  const worst = h.table.length;
+  const inferred = h.vote_orders
+    ? ` Working backwards, ${h.vote_orders === 1 ? "only one viewer order" : `${h.vote_orders.toLocaleString()} viewer orders`} out of every possible one could have produced this result under the ranking rule.`
+    : h.table.length > 9 ? " (Too many couples this week to check every viewer order.)" : "";
+  $("ranks-note").textContent = `Week ${h.week}, ${h.theme}. Rank 1 is best; ${h.has_ig ? "Instagram likes were read after the show." : "no Instagram likes were collected for this week, so the viewer estimate is the model's alone."} `
+    + (out.every(t => t.combined_rank >= worst - out.length + 1)
+      ? "The couple with the lowest estimated combined rank went home."
+      : `The estimate missed: ${out.map(t => `${byName[t.celebrity].couple} (combined rank ${t.combined_rank} of ${worst})`).join(", ")} went home.`)
+    + inferred;
+}
+$("weekpick").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { picked = +b.dataset.w; drawRanks(); } });
+drawRanks();
+
+// ---- elimination path / predicted finish
 const S = D.schedule;
-$("path-sub").textContent = `Most likely couple to go home each remaining week, from ${D.sims.toLocaleString()} simulated seasons. `
-  + `Schedule read from Wikipedia: ${S.total_weeks} weeks, ${S.finalists} couples in the finale`
-  + (S.judges_save ? ", judges' save in effect." : ", no judges' save this season.");
-$("timeline").innerHTML = D.order.map(o => {
-  const out = o.out.map(n => byName[n]);
-  const names = out.map(c => esc(c.couple)).join(" &amp; ") || "No elimination";
-  const ps = out.map(c => pct(c.p_week[String(o.week)])).join(" / ");
-  return `<div class="wk"><div class="n">Week ${o.week}${o.n > 1 ? " · double" : ""}</div>
-    <div class="t">${esc(D.themes[o.week] || "")}</div>${out.map(duo).join(" ")}<div class="out">${names}</div><div class="pp">${ps} chance that week</div></div>`;
-}).join("") + `<div class="wk finale"><div class="n">Finale · Mirrorball</div><div class="t">Projected finalists</div>
-  ${D.finalists.map(n => duo(byName[n])).join(" ")}
-  <div class="out">🏆 ${esc(byName[D.finalists[0]].couple)}</div>
-  <div class="pp">${D.finalists.map(n => `${esc(byName[n].celebrity)} ${pct(byName[n].p_win)}`).join(" · ")}</div></div>`;
+const place = (c, k) => c.p_place[String(k)] || 0;
+if (F) {
+  $("path-h").textContent = "Predicted finishing order";
+  $("path-sub").textContent = `Most likely place for each finalist, from ${D.sims.toLocaleString()} simulated finales.`;
+  $("timeline").innerHTML = D.finish.map((n, i) => {
+    const c = byName[n];
+    return `<div class="wk ${i === 0 ? "finale" : ""}"><div class="n">${i === 0 ? "🏆 Winner" : ordinal(i + 1)}</div>
+      ${duo(c)}<div class="out">${esc(c.couple)}</div><div class="pp">${pct(place(c, i + 1))} chance of finishing ${ordinal(i + 1)}</div></div>`;
+  }).join("");
+} else {
+  $("path-sub").textContent = `Most likely couple to go home each remaining week, from ${D.sims.toLocaleString()} simulated seasons. `
+    + `Schedule read from Wikipedia: ${S.total_weeks} weeks, ${S.finalists} couples in the finale`
+    + (S.judges_save ? ", judges' save in effect." : ", no judges' save this season.");
+  $("timeline").innerHTML = D.order.map(o => {
+    const out = o.out.map(n => byName[n]);
+    const names = out.map(c => esc(c.couple)).join(" &amp; ") || "No elimination";
+    const ps = out.map(c => pct(c.p_week[String(o.week)])).join(" / ");
+    return `<div class="wk"><div class="n">Week ${o.week}${o.n > 1 ? " · double" : ""}</div>
+      <div class="t">${esc(D.themes[o.week] || "")}</div>${out.map(duo).join(" ")}<div class="out">${names}</div><div class="pp">${ps} chance that week</div></div>`;
+  }).join("") + `<div class="wk finale"><div class="n">Finale · Mirrorball</div><div class="t">Projected finalists</div>
+    ${D.finalists.map(n => duo(byName[n])).join(" ")}
+    <div class="out">🏆 ${esc(byName[D.finalists[0]].couple)}</div>
+    <div class="pp">${D.finalists.map(n => `${esc(byName[n].celebrity)} ${pct(byName[n].p_win)}`).join(" · ")}</div></div>`;
+}
 
 // ---- odds table
-const weeks = Object.keys(leader.p_week);
 const heat = p => `background: rgba(255, 93, 108, ${Math.min(p * 1.6, .85).toFixed(2)})`;
+const goldHeat = p => `background: rgba(233, 196, 106, ${Math.min(p * 1.4, .8).toFixed(2)})`;
 const rows = [...D.couples].sort((a, b) => (b.p_win - a.p_win) || (b.p_final - a.p_final) || ((a.place ?? 99) - (b.place ?? 99)));
-$("odds").innerHTML = `<tr><th>Couple</th>${weeks.map(w => `<th>Wk ${w}<br>out</th>`).join("")}<th>Finale</th><th>Win</th></tr>` +
-  rows.map(c => c.alive
-    ? `<tr><td><b>${esc(c.couple)}</b></td>${weeks.map(w => `<td class="heat" style="${heat(c.p_week[w])}">${pct(c.p_week[w])}</td>`).join("")}
-       <td>${pct(c.p_final)}</td><td class="gold">${pct(c.p_win, 1)}</td></tr>`
-    : `<tr class="out-row"><td>${esc(c.couple)}</td><td colspan="${weeks.length + 2}">${esc(c.status)}</td></tr>`).join("");
+const outRow = (c, span) => `<tr class="out-row"><td>${esc(c.couple)}</td><td colspan="${span}">${esc(c.status)}</td></tr>`;
+if (F) {
+  const places = Array.from({ length: nAlive }, (_, i) => i + 1);
+  $("odds-sub").textContent = "Chance of each finishing place in the finale.";
+  $("odds").innerHTML = `<tr><th>Couple</th>${places.map(k => `<th>${k === 1 ? "Win" : ordinal(k)}</th>`).join("")}</tr>` +
+    rows.map(c => c.alive
+      ? `<tr><td><b>${esc(c.couple)}</b></td>${places.map(k => `<td class="heat" style="${k === 1 ? goldHeat(place(c, k)) : ""}">${pct(place(c, k), k === 1 ? 1 : 0)}</td>`).join("")}</tr>`
+      : outRow(c, places.length)).join("");
+} else {
+  const weeks = Object.keys(leader.p_week);
+  $("odds-sub").textContent = "Chance each couple goes home in a given week, makes the finale, or takes the Len Goodman Mirrorball Trophy.";
+  $("odds").innerHTML = `<tr><th>Couple</th>${weeks.map(w => `<th>Wk ${w}<br>out</th>`).join("")}<th>Finale</th><th>Win</th></tr>` +
+    rows.map(c => c.alive
+      ? `<tr><td><b>${esc(c.couple)}</b></td>${weeks.map(w => `<td class="heat" style="${heat(c.p_week[w])}">${pct(c.p_week[w])}</td>`).join("")}
+         <td>${pct(c.p_final)}</td><td class="gold">${pct(c.p_win, 1)}</td></tr>`
+      : outRow(c, weeks.length + 2)).join("");
+}
 
 // ---- couple cards
 function spark(scores) {
-  const pts = scores.filter(s => s.score != null).map(s => [s.week, s.score / s.max]);
+  const byWeek = {};
+  scores.filter(s => s.score != null).forEach(s => { (byWeek[s.week] ||= []).push(s.score / s.max); });
+  const pts = Object.entries(byWeek).map(([w, v]) => [+w, v.reduce((a, b) => a + b, 0) / v.length]);
   if (pts.length < 2) return `<svg class="spark"></svg>`;
   const xs = w => 4 + (w - 1) / (D.week - 1 || 1) * 92, ys = v => 40 - (v - .3) / .7 * 36;
   const d = pts.map(([w, v], i) => `${i ? "L" : "M"}${xs(w).toFixed(1)} ${ys(v).toFixed(1)}`).join("");
@@ -324,7 +414,7 @@ const fanMeter = r => {
 const cardOrder = [...alive, ...D.couples.filter(c => !c.alive).sort((a, b) => a.place - b.place)];
 $("cards").innerHTML = cardOrder.map(c => {
   const last = c.scores.filter(s => s.score != null).at(-1);
-  const wv = c.wiki_views.filter(v => v.views != null).at(-1);
+  const ig = c.instagram.at(-1);
   const yt = c.social.youtube_views, ytn = c.social.youtube_videos;
   return `<div class="card ${c.alive ? "" : "gone"}">
     ${photoStrip(c)}
@@ -335,27 +425,26 @@ $("cards").innerHTML = cardOrder.map(c => {
     ${spark(c.scores)}
     <div class="stats">
       <div><span>Last score</span><b>${last ? `${last.score}/${last.max}` : "–"}</b></div>
-      <div><span>${c.alive ? `Out wk ${D.week}` : "Result"}</span><b>${c.alive ? pct(c.now) : esc(c.status.replace(/ on .*/, ""))}</b></div>
+      <div><span>${c.alive ? (F ? "Win chance" : `Out wk ${D.week}`) : "Result"}</span><b>${c.alive ? pct(c.now, F ? 1 : 0) : esc(c.status.replace(/ on .*/, ""))}</b></div>
+      <div><span>Instagram likes${ig ? ` (wk ${ig.week})` : ""}</span><b>${ig ? fmt(ig.likes) : "–"}</b>${ig && ig.posts > 1 ? ` <span style="display:inline">avg of ${ig.posts}</span>` : ""}</div>
       <div><span>YouTube views</span><b>${fmt(yt)}</b>${ytn ? ` <span style="display:inline">/${ytn} vids</span>` : ""}</div>
-      <div><span>Wiki views (7d)</span><b>${fmt(wv?.views)}</b></div>
       ${c.yt_per_day != null ? `<div><span>Newest video</span><b>+${fmt(c.yt_per_day)}/day</b></div>` : ""}
-      ${c.social.instagram ? `<div><span>Instagram</span><b>${fmt(c.social.instagram)}</b></div>` : ""}
       ${c.social.tiktok ? `<div><span>TikTok</span><b>${fmt(c.social.tiktok)}</b></div>` : ""}
-      ${c.alive ? `<div><span>Finale chance</span><b>${pct(c.p_final)}</b></div><div><span>Win chance</span><b>${pct(c.p_win, 1)}</b></div>
-        <div style="grid-column:1/-1"><span>Fan support (inferred from surviving low scores)</span>${fanMeter(c.fan_rating)}</div>` : ""}
+      ${c.alive && !F ? `<div><span>Finale chance</span><b>${pct(c.p_final)}</b></div><div><span>Win chance</span><b>${pct(c.p_win, 1)}</b></div>` : ""}
+      ${c.alive ? `<div style="grid-column:1/-1"><span>Fan support (inferred from surviving low scores)</span>${fanMeter(c.fan_rating)}</div>` : ""}
     </div></div></div>`;
 }).join("");
 
 // ---- track record
 const B = D.backtest;
-$("bt-sub").textContent = `Backtest on seasons ${B.seasons} (${B.weeks} elimination weeks): every season predicted using only earlier seasons. `
-  + `Settings were tuned on seasons 11–20 so this test stays untouched.`;
+$("bt-sub").textContent = `Backtest on seasons ${B.seasons} (${B.weeks} elimination weeks): every season predicted using only earlier seasons, with the judges + viewers rule. `
+  + `Settings were tuned on seasons 11–20 so this test stays untouched. Instagram likes only exist for this season, so the backtest uses the model's viewer estimate.`;
 $("kpis").innerHTML = [
   [pct(B.model), "correct pick for who goes home"],
-  [pct(B.top3), "eliminated couple was in the model's bottom 3"],
+  [pct(B.top3), "eliminated couple was in the bottom 3"],
+  [pct(B.model_logit), "same inputs without the ranking rule"],
   [pct(B.lowest_score), "\"lowest judges' score goes home\""],
   [pct(B.random), "random guess"],
-  [B.log_loss.toFixed(2), `log loss (judges only ${B.log_loss_judges.toFixed(2)}, random ${B.log_loss_random.toFixed(2)}; lower is better)`],
 ].map(([v, l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join("");
 
 (function calibration() {
@@ -365,8 +454,8 @@ $("kpis").innerHTML = [
     <text x="${x(t)}" y="${T + H + 14}" fill="#a99fd0" font-size="10" text-anchor="middle">${t * 100}%</text>
     <text x="${L - 6}" y="${y(t) + 3}" fill="#a99fd0" font-size="10" text-anchor="end">${t * 100}%</text>`).join("");
   s += `<line x1="${x(0)}" y1="${y(0)}" x2="${x(.7)}" y2="${y(.7)}" stroke="#a99fd0" stroke-dasharray="4 4"/>`;
-  s += `<polyline fill="none" stroke="#e9c46a" stroke-width="2" points="${B.calibration.map(b => `${x(b.predicted)},${y(b.actual)}`).join(" ")}"/>`;
-  s += B.calibration.map(b => `<circle cx="${x(b.predicted)}" cy="${y(b.actual)}" r="${3 + Math.sqrt(b.n) / 4}" fill="#e9c46a" fill-opacity=".85"><title>said ${pct(b.predicted)}, happened ${pct(b.actual)} (${b.n} couple-weeks)</title></circle>`).join("");
+  s += `<polyline fill="none" stroke="#e9c46a" stroke-width="2" points="${B.calibration.map(b => `${x(Math.min(b.predicted, .7))},${y(Math.min(b.actual, .7))}`).join(" ")}"/>`;
+  s += B.calibration.map(b => `<circle cx="${x(Math.min(b.predicted, .7))}" cy="${y(Math.min(b.actual, .7))}" r="${3 + Math.sqrt(b.n) / 4}" fill="#e9c46a" fill-opacity=".85"><title>said ${pct(b.predicted)}, happened ${pct(b.actual)} (${b.n} couple-weeks)</title></circle>`).join("");
   s += `<text x="${L + W / 2}" y="${T + H + 30}" fill="#a99fd0" font-size="11" text-anchor="middle">model's predicted chance</text>
     <text transform="translate(12 ${T + H / 2}) rotate(-90)" fill="#a99fd0" font-size="11" text-anchor="middle">actually eliminated</text>`;
   $("cal").innerHTML = s;
@@ -374,17 +463,16 @@ $("kpis").innerHTML = [
 })();
 
 const R = D.record;
-const pending = `Week ${D.week} odds are frozen in <code>predictions/</code> and get graded here once the result is in.`;
+const pending = `The ${F ? "finale" : `Week ${D.week}`} odds are frozen in <code>predictions/</code> and get graded here once the result is in.`;
 $("record").innerHTML = R.length
   ? `<table style="margin-top:8px"><tr><th>Week</th><th>Frozen</th><th>Predicted</th><th>Actual</th><th></th></tr>${R.map(r =>
       `<tr><td>${r.week}</td><td>${r.stage === "preshow" ? "before show" : "after scores"}</td><td>${r.predicted.map(esc).join(", ")}</td>
        <td>${r.actual.map(esc).join(", ")} (${pct(r.p_actual)})</td><td class="${r.hit ? "ok" : "miss"}">${r.hit ? "✓" : "✗ #" + r.rank_of_actual}</td></tr>`).join("")}</table><p>${pending}</p>`
-  : `<p>No graded weeks yet. ${pending} Earlier weeks of this season can't be graded honestly, because their odds were never saved before the shows aired.</p>`;
+  : `<p>No graded weeks yet. ${pending} Week 6 was frozen but had no elimination, and the predictor wasn't run before Weeks 7–10, so those can't be graded honestly.</p>`;
 
-const Hs = D.hindsight || [];
 const called = Hs.filter(r => r.hit).length;
-$("hind-sub").textContent = `Each week replayed by a model trained only on earlier seasons: it called ${called} of ${Hs.length}. `
-  + `Looser than the frozen record above, because it uses today's view counts.`;
+$("hind-sub").textContent = `Each week replayed with the judges + viewers rule, trained only on earlier seasons: it called ${called} of ${Hs.length}. `
+  + `Looser than the frozen record above, because likes and views were read after those weeks aired. Pick a week in "Judges' ranks + viewers' votes" to see why.`;
 $("hindsight").innerHTML = Hs.map(r =>
   `<div><b>Week ${r.week}</b> ${esc(r.theme)} · predicted <b>${r.predicted.map(esc).join(", ")}</b>, actual <b>${r.actual.map(esc).join(", ")}</b>
    (${pct(r.p_actual)}) · <span class="${r.hit ? "ok" : "miss"}">${r.hit ? "✓ called it" : `✗ missed (was #${r.rank_of_actual})`}</span></div>`).join("");
@@ -392,23 +480,23 @@ $("hindsight").innerHTML = Hs.map(r =>
 // ---- how it works
 const C = D.coefficients;
 const w = v => `<code>${v >= 0 ? "+" : ""}${v.toFixed(2)}</code>`;
-$("how").innerHTML = `<p>Like the World Cup models that turn team ratings into match odds and then simulate the tournament, this treats every elimination night as a race to the bottom.
-Each couple gets a <b>danger rating</b>, a weighted sum of the inputs below (positive weight = more likely to go home):</p>
-<ul>
-  <li><b>Judges' score this week</b> vs. the field ${w(C.score_z)}, with extra weight in judges'-save seasons ${w(C.score_z_save)}, plus prior form ${w(C.form_z)} and trend ${w(C.trend)}.</li>
-  <li><b>Times in the bottom two</b> already ${w(C.bottom_prev)}.</li>
-  <li><b>Fan rating</b> ${w(C.fan_rating)}: works like an Elo rating for the audience. A couple earns credit each week they survive a score the judges alone would have sent home, and loses it when they land in the bottom two anyway.</li>
-  <li><b>Pro partner's track record</b> in earlier seasons ${w(C.pro_strength)}.</li>
-  <li><b>Celebrity type</b> vs. actors/TV hosts: athlete ${w(C.cat_athlete)}, reality star ${w(C.cat_reality)}, musician ${w(C.cat_music)}, social media ${w(C.cat_social)}.</li>
-  <li><b>Views across platforms</b>: YouTube views per official performance video (plus Instagram/TikTok when added) ${w(C.social_z)}, and Wikipedia pageviews ${w(C.wiki_z)}. Every run also logs these counts so future seasons get clean week-by-week data.</li>
-</ul>
-<p>A softmax turns the ratings into odds that add to 100% each week. The weights are fit by maximum likelihood on every elimination since season 1, with a ridge penalty (strength ${B.l2}) chosen on older seasons.
-Future weeks are simulated ${D.sims.toLocaleString()} times. Projected scores follow each couple's recent form, shifted by the announced dance style where known; the finale is decided by buzz plus form.</p>`;
+$("how").innerHTML = `<p>The show adds a ranking of the judges' scores to a ranking of the viewers' votes, and the lowest combined total goes home. This model copies that rule:</p>
+<ol>
+  <li><b>Judges' rank points.</b> The week's judges' scores, ranked: best = 1.0, worst = 0.0.</li>
+  <li><b>Viewers' rank points.</b> Votes are secret, so they're estimated by blending two rankings: Instagram likes on @dancingwiththestars' performance posts that week (${pct(RULE.instagram_share)}),
+    and a fan-support estimate learned from 35 seasons (${pct(1 - RULE.instagram_share)}). The second comes from a conditional logit; its non-judge parts are:
+    form ${w(C.form_pts)}, times in the bottom two ${w(C.bottom_prev)}, an Elo-style <b>fan rating</b> that rises each week a couple survives a score the judges alone would have sent home ${w(C.fan_rating)},
+    pro partner ${w(C.pro_strength)}, celebrity type (athlete ${w(C.cat_athlete)}, reality ${w(C.cat_reality)}, musician ${w(C.cat_music)}, social ${w(C.cat_social)}) and YouTube views ${w(C.social_z)}.</li>
+  <li><b>Combined.</b> Judges' points + viewers' points. The chance of going home is a softmax of minus ${RULE.k.toFixed(2)} × the combined total, where ${RULE.k.toFixed(2)} is fit on every past elimination.</li>
+</ol>
+<p>The rest of the season is simulated ${D.sims.toLocaleString()} times: judges' scores are drawn around each couple's recent form, and the finale uses the same rule repeatedly to rank 5th, 4th, … down to the winner.
+After each week the page also works backwards: it tries every possible viewer order and keeps the ones that would have produced the actual result, which bounds where each couple really placed in the vote.
+Wikipedia pageviews are no longer used: they tracked fame, not fans who vote.</p>`;
 
 // ---- credits
 const credited = D.couples.flatMap(c => [[c.celebrity, c.photo], [c.pro, c.pro_photo]]).filter(([, p]) => p && p.image);
 $("credits").innerHTML = credited.map(([n, p]) => `<a href="${esc(p.image)}" target="_blank" rel="noopener">${esc(n)}</a>`).join(" · ")
-  + "<br>Photos from Wikimedia Commons via each person's Wikipedia article; licenses on each file page.";
+  + "<br>Portraits from Wikimedia Commons via each person's Wikipedia article; couple photos are ABC promotional images.";
 </script>
 </body>
 </html>
